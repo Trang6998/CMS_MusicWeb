@@ -19,6 +19,17 @@ namespace CMS.Web.Controllers
         }
         public ActionResult ChiTietRadio(int id)
         {
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.Radio.Include(x => x.NhanVien);
+                Radio radio = query.FirstOrDefault(x => x.RadioID == id);
+
+                radio.LuotXem++;
+
+                db.SaveChanges();
+
+                ViewBag.ChiTietRadio = radio;
+            }
             return View();
         }
     }

@@ -12,6 +12,7 @@ import DanhSachUsers from './components/Users/DanhSachUsers.vue';
 import DanhSachAlbum from './components/QuanLyThongTin/Album/DanhSachAlbum.vue';
 import DanhSachLoaiTaiKhoan from './components/QuanLyTaiKhoan/LoaiTaiKhoan/DanhSachLoaiTaiKhoan.vue';
 import DanhSachLienHe from './components/LienHe/DanhSachLienHe.vue';
+import DanhSachRadio from './components/QuanLyNhac/Radio/DanhSachRadio.vue';
 import Home from './views/Home.vue';
 
 Vue.use(Router);
@@ -66,6 +67,11 @@ export default new Router({
             path: '/lienhe',
             name: 'lienhe',
             component: DanhSachLienHe
+        },
+        {
+            path: '/radio',
+            name: 'radio',
+            component: DanhSachRadio
         },
         {
             path: '/users',

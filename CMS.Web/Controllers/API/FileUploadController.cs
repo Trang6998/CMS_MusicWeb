@@ -41,7 +41,7 @@ namespace CMS.Controllers
 
         [Route("upload")]
         [HttpPost]
-        public async Task<HttpResponseMessage> PostImages()
+        public async Task<HttpResponseMessage> UploadFiles()
         {
             var db = new ApplicationDbContext();
 
@@ -57,7 +57,7 @@ namespace CMS.Controllers
             {
                 // Read the form data.
                 await Request.Content.ReadAsMultipartAsync(provider);
-                string key = "";
+                string key = "", type="";
                 foreach (MultipartFileData file in provider.FileData)
                 {
                     var fileName = file.Headers.ContentDisposition.FileName.Replace("\"", "").Split('.');
@@ -71,18 +71,22 @@ namespace CMS.Controllers
                         destinationPath = Path.Combine(directory, newName + '.' + fileName[1]);
                     }
                     File.Move(sourcePath, destinationPath);
-                    var FileUpload = new FileUpload();
-                    FileUpload.FileName = fileName[0];
-                    FileUpload.FilePath = destinationPath;
-                    FileUpload.FileSize = new FileInfo(destinationPath).Length.ToString();
-                    FileUpload.FileKey = newName;
-                    key = FileUpload.FileKey;
-                    FileUpload.FileType = fileName[1];
-                    db.FileUpload.Add(FileUpload);
+                    var fileUpload = new FileUpload();
+                    fileUpload.FileName = fileName[0];
+                    fileUpload.FilePath = destinationPath;
+                    fileUpload.FileSize = new FileInfo(destinationPath).Length.ToString();
+                    fileUpload.FileKey = newName;
+                    key = fileUpload.FileKey;
+                    fileUpload.FileType = fileName[1];
+                    type = fileUpload.FileType;
+                    db.FileUpload.Add(fileUpload);
                 }
 
                 db.SaveChanges();
+                string[] strType = { "mp3", "wma", "wav", "flac", "aac", "ogg", "aiff", "alac", "amr", "midi" };
 
+                if (strType.Contains(type))
+                    return Request.CreateResponse(HttpStatusCode.OK, key + "." + type);
                 return Request.CreateResponse(HttpStatusCode.OK, key);
             }
             catch (System.Exception e)

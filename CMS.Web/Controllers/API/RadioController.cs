@@ -22,7 +22,7 @@ namespace CMS.Controllers
                     pagination = new Pagination();
                 if (pagination.includeEntities)
                 {
-
+                    results = results.Include(x => x.NhanVien);
                 }
 
                 if (!string.IsNullOrWhiteSpace(keyworlds))
@@ -58,6 +58,10 @@ namespace CMS.Controllers
             {
                 using (var transaction = db.Database.BeginTransaction())
                 {
+                    radio.LuotXem = 0;
+                    radio.NhanVienID = 1;
+                    radio.NgayDang = DateTime.Now;
+                    
                     db.Radio.Add(radio);
 
                     await db.SaveChangesAsync();
@@ -79,14 +83,13 @@ namespace CMS.Controllers
             }
             using (var db = new ApplicationDbContext())
             {
+                radio.NhanVienID = 1;
+                radio.NgayDang = DateTime.Now;
                 db.Entry(radio).State = EntityState.Modified;
 
                 try
                 {
-                    using (var transaction = db.Database.BeginTransaction())
-                    {
-                        await db.SaveChangesAsync();
-                    }
+                    await db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException ducEx)
                 {

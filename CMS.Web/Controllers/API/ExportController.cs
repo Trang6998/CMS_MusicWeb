@@ -25,7 +25,7 @@ namespace G02Apis.Controllers
             if (path == null || path.Count == 0)
                 throw new HttpException(404, "File not found!");
             System.IO.FileInfo fi = new System.IO.FileInfo(path[0].FilePath);
-            return File(path[0].FilePath, fi.GetType().ToString());
+            return File(path[0].FilePath, fi.GetType().ToString(), path[0].FileName + "." + path[0].FileType);
         }
 
         public FileResult Excel(string key)
