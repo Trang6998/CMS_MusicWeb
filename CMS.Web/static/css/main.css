@@ -1,0 +1,153 @@
+
+table.v-table thead th {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    background-color: #fafafa !important;
+    opacity: 1;
+}
+    table.v-table thead th.sortable {
+        color: #26A69A !important;
+    }
+table.v-table tbody td:first-child,
+table.v-table tbody td:not(:first-child),
+table.v-table thead td:first-child,
+table.v-table thead td:not(:first-child) {
+    font-size: 14px !important;
+    height: 30px !important;
+}
+table.v-table tbody td:first-child, table.v-table tbody td:not(:first-child),
+table.v-table tbody th:first-child, table.v-table tbody th:not(:first-child),
+table.v-table thead td:first-child, table.v-table thead td:not(:first-child),
+table.v-table thead th:first-child, table.v-table thead th:not(:first-child) {
+    padding: 0 10px !important;
+}
+table.v-table tbody td:first-child,
+table.v-table tbody td:not(:first-child),
+table.v-table tbody th:first-child,
+table.v-table tbody th:not(:first-child),
+table.v-table thead td:first-child,
+table.v-table thead td:not(:first-child),
+table.v-table thead th:first-child,
+table.v-table thead th:not(:first-child) {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+table.v-table thead tr {
+    height: 35px !important;
+}
+    table.v-table thead tr.v-datatable__progress {
+        height: 0px !important;
+    }
+.table-border th, .table-border td {
+    border: 1px solid #ccc;
+}
+
+.table-border th, .table-border td {
+    border: 1px solid #ccc;
+}
+.table .btn--icon {
+    margin: 0;
+    width: 28px;
+    height: 28px;
+}
+/* width */
+::-webkit-scrollbar {
+    height: 5px;
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555
+}
+
+.ds-event .v-btn--flat, .ds-event .v-text-field--solo .v-input__slot,
+.ds-calendar-event-popover-card .v-text-field--solo .v-input__slot {
+    background-color: #f5f5f5 !important;
+    margin-bottom: 5px;
+}
+
+.v-btn {
+    text-transform: none !important;
+}
+
+/*.v-input {
+    margin-top: 15px !important;
+}
+
+.v-text-field {
+    margin-top: 15px;
+}
+
+    .v-text-field .v-input__slot {
+        border: 1px solid #ddd;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        background: #fff;
+        margin-bottom: 3px;
+        border-radius: 3px;
+    }
+
+.v-input input, .v-input textarea {
+    padding: 5px !important;
+}
+
+.v-input .v-select__selections {
+    padding-left: 5px !important;
+}
+
+.v-text-field .v-input__icon--clear .v-icon {
+    font-size: 14px !important;
+}
+
+.v-text-field .v-label {
+    -webkit-transform: translateY(-30px) scale(1) !important;
+    transform: translateY(-30px) scale(1) !important;
+    overflow: visible !important;
+}*/
+
+.v-tabs__container {
+    height: 35px !important;
+}
+
+.theme--light.v-datatable .v-datatable__actions, .theme--light.v-table {
+    background-color: transparent !important;
+}
+
+.v-table__overflow {
+    background: #fff !important;
+}
+
+table.v-table thead th {
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
+}
+/*.v-input--is-focused .v-input__slot {
+    border-color: rgba(25, 118, 210,.6) !important;
+    outline: 0 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(25, 118, 210,.6) !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(25, 118, 210,.6) !important;
+}
+
+.v-text-field .v-input__append-inner {
+    padding-right: 4px;
+}*/
+.v-list__tile__action .v-input--selection-controls {
+    margin:0 !important;
+}
+
+.v-card__title {
+    padding: 5px 10px !important;
+}

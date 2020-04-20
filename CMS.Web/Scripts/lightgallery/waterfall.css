@@ -1,0 +1,67 @@
+﻿.waterfall {
+    overflow: hidden;
+    margin: 0;
+}
+
+    .waterfall.min {
+        margin: 0;
+    }
+
+    .waterfall li {
+        /*position: absolute;*/
+        left: 0;
+        top: 0;
+        opacity: 0;
+        z-index: 0;
+        list-style: none;
+        transform: translateY(100px);
+    }
+
+        .waterfall li img {
+            max-width: 100%;
+        }
+
+        .waterfall li:hover {
+            z-index: 1;
+        }
+
+        .waterfall li.show {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s, top 1s;
+        }
+
+        .waterfall li > div {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 32px;
+            border-radius: 3px;
+            margin: 10px;
+            padding: 15px;
+            background: rgb(255, 255, 255);
+            border: 1px solid rgba(038, 191, 64, 0);
+            transition: all 0.5s;
+        }
+
+            .waterfall li > div:hover {
+                transform: translateY(-10px);
+                border: 1px solid rgba(038, 191, 64, 1);
+                box-shadow: 0 30px 80px rgba(038, 191, 64, 0.3);
+                transition: all 0.3s;
+            }
+
+        .waterfall li.min > div {
+            margin: 0;
+            transform: none;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+            .waterfall li.min > div:hover {
+                transform: none;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }

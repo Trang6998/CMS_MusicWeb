@@ -1,0 +1,161 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\Media\**" />
+    <Compile Remove="Entities\Tasks\**" />
+    <Compile Remove="IO\**" />
+    <Compile Remove="Services\Media\**" />
+    <Compile Remove="Services\Tasks\**" />
+    <EmbeddedResource Remove="Entities\Media\**" />
+    <EmbeddedResource Remove="Entities\Tasks\**" />
+    <EmbeddedResource Remove="IO\**" />
+    <EmbeddedResource Remove="Services\Media\**" />
+    <EmbeddedResource Remove="Services\Tasks\**" />
+    <None Remove="Entities\Media\**" />
+    <None Remove="Entities\Tasks\**" />
+    <None Remove="IO\**" />
+    <None Remove="Services\Media\**" />
+    <None Remove="Services\Tasks\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Events\" />
+    <Folder Include="Handlers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="CronExpressionDescriptor" Version="2.13.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="4.7.0" />
+    <PackageReference Include="ncrontab" Version="3.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Interfaces\Services\IEventService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\AccessToken.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IAccessTokenService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\AccessToken.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IAlbumService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\Album.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IAlbum_BaiHatService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\Album_BaiHat.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IBaiHatService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\BaiHat.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IBaiVietService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\BaiViet.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\ICaSyService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\CaSy.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\ICaSy_BaiHatService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\CaSy_BaiHat.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IChuyenMucService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\ChuyenMuc.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IChuyenMuc_BaiVietService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\ChuyenMuc_BaiViet.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IFileUploadService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\FileUpload.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\ILienHeService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\LienHe.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\ILoaiNhanVienService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\LoaiNhanVien.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\INhanVienService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\NhanVien.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IQuanHuyenService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\QuanHuyen.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IRadioService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\Radio.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\ITheLoaiService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\TheLoai.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\ITinhThanhService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\TinhThanh.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IUserService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\User.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Interfaces\Services\IXaPhuongService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\XaPhuong.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\EventService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\AccessToken.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\AccessTokenService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\AccessToken.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\AlbumService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\Album.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\Album_BaiHatService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\Album_BaiHat.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\BaiHatService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\BaiHat.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\BaiVietService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\BaiViet.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\CaSyService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\CaSy.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\CaSy_BaiHatService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\CaSy_BaiHat.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\ChuyenMucService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\ChuyenMuc.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\ChuyenMuc_BaiVietService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\ChuyenMuc_BaiViet.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\FileUploadService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\FileUpload.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\LienHeService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\LienHe.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\LoaiNhanVienService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\LoaiNhanVien.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\NhanVienService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\NhanVien.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\QuanHuyenService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\QuanHuyen.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\RadioService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\Radio.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\TheLoaiService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\TheLoai.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\TinhThanhService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\TinhThanh.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\UserService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\User.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Services\XaPhuongService.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\XaPhuong.cs</CustomToolNamespace>
+    </Compile>
+  </ItemGroup>
+
+</Project>

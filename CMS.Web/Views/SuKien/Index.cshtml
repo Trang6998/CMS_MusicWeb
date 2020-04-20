@@ -1,0 +1,121 @@
+﻿@using CMS.Models;
+@{
+    ViewBag.Title = "Event";
+    Event suKienMoiNhat = ViewBag.SuKienMoiNhat;
+    List<Event> danhSachSuKien = ViewBag.DanhSachSuKien;
+}
+<!-- Preloader -->
+<div id="preloader">
+    <div>
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <span>Wait, please...</span>
+    </div>
+</div>
+<!-- /Preloader -->
+<!-- Event Welcome Area Start -->
+<section class="event-welcome-area bg-overlay bg-img jarallax" style="background-image: url(img/bg-img/54.jpg);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="event-welcome-text text-center">
+                    <span>Event start on @suKienMoiNhat.ThoiGianTu.ToLongDateString()</span>
+                    <h2>@suKienMoiNhat.TieuDe</h2>
+                    <p>@suKienMoiNhat.MoTaNgan</p>
+                    <div class="coming-soon-clock mt-30 mb-30">
+                        <div id="clock" style="color: white" value="@suKienMoiNhat.ThoiGianTu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Event Welcome Area End -->
+<!-- Event Search Area Start -->
+<div class="event-search-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="event-search-content">
+                    <form action="#" class="search-form">
+                        <div class="row align-items-end">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="form-group">
+                                    <label for="event-date">Events from</label>
+                                    <input type="date" class="form-control" id="event-date">
+                                    <small class="form-input-icon"><i class="icon_calendar"></i></small>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="form-group">
+                                    <label for="location">Location</label>
+                                    <input type="text" class="form-control" id="location" placeholder="11 Rose St, Brooklyn, NY">
+                                    <small class="form-input-icon"><i class="icon_pin_alt"></i></small>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="form-group">
+                                    <label for="search">Search</label>
+                                    <input type="search" class="form-control" id="search" placeholder="Keywords">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="form-group text-right">
+                                    <button type="submit" class="btn razo-btn w-100">Search Event</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Event Search Area End -->
+<!-- Razo Event Area Start -->
+<section class="razo-events-area section-padding-0-80">
+    <div class="container">
+        <div class="row">
+
+            @for (int i = 0; i < danhSachSuKien.Count(); i++)
+            {
+                <!-- Single Razo Event Area -->
+                <div class="col-12">
+                    <div class="single-razo-event-area d-flex flex-wrap align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Thumbnail -->
+                        <div class="event-thumbnail">
+                            <img src="http://localhost:8888/fileupload/download?key=@(danhSachSuKien[i].AnhDaiDien)" alt="">
+                        </div>
+                        <!-- Event Content -->
+                        <div class="event-content d-flex align-items-center">
+                            <div class="event-text">
+                                <h5>@danhSachSuKien[i].TieuDe</h5>
+                                <div class="event-meta">
+                                    <a href="#" class="event-date"><i class="icon_calendar"></i> @danhSachSuKien[i].ThoiGianTu.ToLongDateString()</a>
+                                    <a href="#" class="event-time"><i class="icon_clock_alt"></i> @danhSachSuKien[i].ThoiGianTu.ToShortTimeString() - @danhSachSuKien[i].ThoiGianDen.ToShortTimeString()</a>
+                                    <a href="#" class="event-address"><i class="icon_pin_alt"></i> @danhSachSuKien[i].DiaDiem, @danhSachSuKien[i].XaPhuong.TenXaPhuong, @danhSachSuKien[i].QuanHuyen.TenQuanHuyen, @danhSachSuKien[i].TinhThanh.TenTinhThanh</a>
+                                </div>
+                                <p>@danhSachSuKien[i].MoTaNgan ...</p>
+                                <a href="@Url.Action("ChiTietSuKien", "SuKien", new { id = danhSachSuKien[i].EventID })" class="btn read-more-btn">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                            </div>
+                            <!-- Event Purchase Button -->
+                            @*<div class="event-purchase-button">
+                                <a href="#" class="btn razo-btn"><i class="icon_cart"></i> Buy Tickets</a>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        @*<div class="row">
+            <div class="col-12 text-center">
+                <a href="#" class="btn razo-btn mt-30">Load More</a>
+            </div>
+        </div>*@
+    </div>
+</section>
+<!-- Razo Event Area End -->

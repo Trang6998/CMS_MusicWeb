@@ -1,0 +1,94 @@
+﻿@using CMS.Web.Base;
+@using CMS.Models;
+@{
+    ViewBag.Title = "Liên Hệ";
+}
+    <div>
+        <section class="wthree-row py-md-5 w3-contact" id="contact">
+            <div>
+                @if (ViewBag.mgs != null && ViewBag.mgs != 3)
+                {
+                    if (ViewBag.mgs == 4)
+                    {
+                        <div class="row" style="place-content: center; text-align: center; font-size: 30px; font-style: italic; padding: 20px;">
+                            Cảm ơn bạn đã đăng ký thành viên!
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row" style="place-content: center; text-align: center; font-size: 30px; font-style: italic; padding-top: 20px;">
+                            Cảm ơn bạn đã đặt lịch tại GIẶT LÀ HP!
+                        </div>
+                        if (ViewBag.mgs == 1)
+                        {
+                            <div class="row" style="place-content: center; font-size: 18px; font-style: italic; padding-top: 5px; padding-bottom: 20px">
+                                Click vào&nbsp;<a data-toggle="modal" href=""
+                                                  aria-pressed="false" data-target="#exampleModalDangKy"> <b>đây</b> </a> &nbsp;để cập nhật đăng ký thông tin thành viên
+                            </div>
+                        }
+                        else
+                        {
+                            <div style="padding-bottom: 20px"></div>
+                        }
+                    }
+
+                }
+            </div>
+            <div class="container py-2">
+                <h3 class="w3ls-title text-center text-capitalize pb-md-5 pb-4">Liên hệ - góp ý</h3>
+                <div class="row contact-form py-3" >
+                    <div class="col-lg-6 wthree-form-left" style="margin-top:-16px">
+                        <!-- contact form grid -->
+                        <div class="contact-top1">
+                            <form action="/home/themlienhe" method="post" class="f-color">
+                                <div class="form-group">
+                                    <label for="contactusername">Họ tên</label>
+                                    <input type="text" class="form-control" name="tennguoidung" placeholder="Họ và tên" id="contactusername">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactemail">Số điện thoại</label>
+                                    <input type="number" class="form-control" name="sodienthoai" placeholder="Số điện thoại" id="contactemail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactcomment">Lời nhắn</label>
+                                    <textarea class="form-control" rows="5" placeholder="Lời đóng góp ý kiến cho chúng tôi" name="noidung" id="contactcomment" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-info btn-block">Gửi</button>
+                            </form>
+                        </div>
+                        <!--  //contact form grid ends here -->
+                    </div>
+                    <!-- contact details -->
+                    <!-- contact map grid -->
+                    <div class="col-lg-6  mt-lg-0 mt-md-5 map contact-right" style="padding-top:16px">
+                        <div class="address mt-3">
+                            <h5 class="pb-3 text-capitalize">Thông tin liên hệ</h5>
+                            <address>
+                                <ul>
+                                    <li>
+                                        <i class="fa fa-map-marker-alt"></i>  102 - A1, phố 8/3, Quỳnh Mai, Hai Bà Trưng, Hà Nội -
+                                        <i class="fa fa-phone"></i><a href="tel:0845971859">  084 5971 859</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-map-marker-alt"></i>  Ngõ 1, đường Đình, An Phú, Trâu Quỳ, Gia Lâm, Hà Nội -
+                                        <i class="fa fa-phone"></i><a href="tel:0886300633">  088 6300 633</a>
+                                    </li>
+                                    <li><i class="fa fa-envelope"></i>  giatlahienphong@gmail.com</li>
+                                    <li><i class="fa fa-clock"></i>  Thứ 2 - Chủ Nhật : 07:30 - 21:00</li>
+                                </ul>
+                            </address>
+                        </div>
+                        <div class="row">
+                            <iframe class="h-50" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=102%20A1%2C%20ph%E1%BB%91%208%2F3+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+                                    allowfullscreen style="margin: 10px"></iframe>
+                            @*<iframe class="h-50" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=102%20A1%2C%20ph%E1%BB%91%208%2F3+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+                                    allowfullscreen style="width: inherit; margin: 5px"></iframe>*@
+                        </div>
+                    </div>
+                    <!--//contact map grid ends here-->
+                </div>
+                <!-- //contact details container -->
+            </div>
+        </section>
+    </div>
+

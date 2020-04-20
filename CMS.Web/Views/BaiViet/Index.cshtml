@@ -1,0 +1,154 @@
+﻿@using CMS.Web.Base;
+@using CMS.Models;
+@{
+    ViewBag.Title = "Blog";
+    List<ChuyenMuc> dsChuyenMuc = ViewBag.DanhSachChuyenMuc;
+    List<BaiViet> dsTinMoi = ViewBag.DanhSachTinMoi;
+}
+
+<!-- Preloader -->
+<div id="preloader">
+    <div>
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <span>Wait, please...</span>
+    </div>
+</div>
+<!-- /Preloader -->
+<!-- Latest News Area Start -->
+<section class="razo-latest-news-area bg-overlay bg-img jarallax" style="background-image: url(img/bg-img/32.jpg);">
+    <!-- Razo Latest News Slide -->
+    <div class="razo-latest-news-slide owl-carousel">
+
+        @for (int i = 0; i < dsTinMoi.Count(); i++)
+        {
+            <!-- Single Latest News Area -->
+            <div class="razo-single-latest-news-area bg-overlay bg-img" style="background-image: url(http://localhost:8888/fileupload/download?key=@(dsTinMoi[i].AnhDaiDien));">
+                <!-- Post Content -->
+                <div class="post-content">
+                    <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = dsTinMoi[i].BaiVietID })" class="post-title">@dsTinMoi[i].TieuDe</a>
+                    <p>@dsTinMoi[i].MoTaNgan</p>
+                </div>
+                <!-- Post Date -->
+                <div class="post-date">
+                    <h2>@dsTinMoi[i].NgayDang.Day</h2>
+                    <p>Tháng @dsTinMoi[i].NgayDang.Month</p>
+                </div>
+                <!-- Read More -->
+                <div class="read-more-btn">
+                    <a class="btn" href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = dsTinMoi[i].BaiVietID })">Đọc thêm<i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<!-- Latest News Area End -->
+<section class="show-routine-area section-padding-80-0 mb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="showRoutineTab" role="tablist">
+                    <!-- Single Nav Item -->
+                    @for (int i = 0; i < dsChuyenMuc.Count(); i++)
+                    {
+                        <li class="nav-item">
+                            @if (i == 0)
+                            {
+                                <a class="nav-link active" id="tab-@i" data-toggle="tab" href="#tab@(i)" role="tab" aria-controls="tab@(i)" aria-selected="true">
+                                    @dsChuyenMuc[i].TenChuyenMuc
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" id="tab-@i" data-toggle="tab" href="#tab@(i)" role="tab" aria-controls="tab@(i)" aria-selected="false">
+                                    @dsChuyenMuc[i].TenChuyenMuc
+                                </a>
+                            }
+                        </li>
+                    }
+                </ul>
+                <div class="tab-content" id="showRoutineTabContent">
+                    <!-- Single Tab Content -->
+                    @for (int i = 0; i < dsChuyenMuc.Count(); i++)
+                    {
+                        if (i == 0)
+                        {
+                            <div class="tab-pane fade show active" id="tab@(i)" role="tabpanel" aria-labelledby="tab-@i">
+                                <div class="row">
+                                    <!-- News Area Start -->
+                                    <div class="col-12 uza-news-area section-padding-80">
+                                        <div class="container">
+                                            <div class="row razo-blog-masonary">
+                                                @for (int j = 0; j < dsChuyenMuc[i].ChuyenMuc_BaiViet.Count(); j++)
+                                                {
+                                                    <!-- Single Blog Item -->
+                                                    <div class="col-12 col-sm-6 col-md-4 razo-blog-masonary-item mb-30">
+                                                        <div class="razo-blog-masonary-single-item">
+                                                            <!-- Post Thumbnail -->
+                                                            <div class="post-thumbnail">
+                                                                <a href="#"><img src="http://localhost:8888/fileupload/download?key=@(dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.AnhDaiDien)" alt=""></a>
+                                                            </div>
+                                                            <!-- Post Content -->
+                                                            <div class="post-content">
+                                                                <div class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> @dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.NgayDang.ToLongDateString()</div>
+                                                                <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiVietID })" class="post-title">@dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.TieuDe</a>
+                                                                <p>@dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.MoTaNgan</p>
+                                                                <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiVietID })" class="btn read-more-btn">Đọc thêm <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- News Area End -->
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="tab-pane fade" id="tab@(i)" role="tabpanel" aria-labelledby="tab-@i">
+                                <div class="row">
+                                    <!-- News Area Start -->
+                                    <div class="col-12 uza-news-area section-padding-80">
+                                        <div class="container">
+                                            <div class="row razo-blog-masonary">
+                                                @for (int j = 0; j < dsChuyenMuc[i].ChuyenMuc_BaiViet.Count(); j++)
+                                                {
+                                                    <!-- Single Blog Item -->
+                                                    <div class="col-12 col-sm-6 col-md-4 razo-blog-masonary-item mb-30">
+                                                        <div class="razo-blog-masonary-single-item">
+                                                            <!-- Post Thumbnail -->
+                                                            <div class="post-thumbnail">
+                                                                <a href="#"><img src="http://localhost:8888/fileupload/download?key=@(dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.AnhDaiDien)" alt=""></a>
+                                                            </div>
+                                                            <!-- Post Content -->
+                                                            <div class="post-content">
+                                                                <div class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> @dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.NgayDang.ToLongDateString()</div>
+                                                                <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiVietID })" class="post-title">@dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.TieuDe</a>
+                                                                <p>@dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.MoTaNgan</p>
+                                                                <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiVietID })" class="btn read-more-btn">Đọc thêm <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- News Area End -->
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

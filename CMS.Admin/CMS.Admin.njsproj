@@ -1,0 +1,790 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>CMS.Admin</Name>
+    <RootNamespace>CMS.Admin</RootNamespace>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>9ef25b7b-b42e-48a9-995f-1421e2a6bdd1</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>node_modules\@vue\cli-service\bin\vue-cli-service.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <NodejsPort>1337</NodejsPort>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
+    <EnableTypeScript>true</EnableTypeScript>
+    <StartWebBrowser>true</StartWebBrowser>
+    <ScriptArguments>serve</ScriptArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".babelrc" />
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\index.html" />
+    <Content Include="public\manifest.json" />
+    <Content Include="public\robots.txt" />
+    <Content Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="public\static\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="public\static\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="public\static\ckeditor\plugins\balloonpanel\skins\kama\balloonpanel.css" />
+    <Content Include="public\static\ckeditor\plugins\balloonpanel\skins\moono-lisa\balloonpanel.css" />
+    <Content Include="public\static\ckeditor\plugins\balloonpanel\skins\moono-lisa\images\close.png" />
+    <Content Include="public\static\ckeditor\plugins\balloonpanel\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="public\static\ckeditor\plugins\balloonpanel\skins\moono\balloonpanel.css" />
+    <Content Include="public\static\ckeditor\plugins\balloonpanel\skins\moono\images\close.png" />
+    <Content Include="public\static\ckeditor\plugins\balloonpanel\skins\moono\images\hidpi\close.png" />
+    <Content Include="public\static\ckeditor\plugins\balloontoolbar\skins\default.css" />
+    <Content Include="public\static\ckeditor\plugins\balloontoolbar\skins\kama\balloontoolbar.css" />
+    <Content Include="public\static\ckeditor\plugins\balloontoolbar\skins\moono-lisa\balloontoolbar.css" />
+    <Content Include="public\static\ckeditor\plugins\balloontoolbar\skins\moono\balloontoolbar.css" />
+    <Content Include="public\static\ckeditor\plugins\colordialog\dialogs\colordialog.css" />
+    <Content Include="public\static\ckeditor\plugins\copyformatting\cursors\cursor-disabled.svg" />
+    <Content Include="public\static\ckeditor\plugins\copyformatting\cursors\cursor.svg" />
+    <Content Include="public\static\ckeditor\plugins\copyformatting\styles\copyformatting.css" />
+    <Content Include="public\static\ckeditor\plugins\easyimage\styles\easyimage.css" />
+    <Content Include="public\static\ckeditor\plugins\flash\images\placeholder.png" />
+    <Content Include="public\static\ckeditor\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="public\static\ckeditor\plugins\icons.png" />
+    <Content Include="public\static\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="public\static\ckeditor\plugins\iframe\images\placeholder.png" />
+    <Content Include="public\static\ckeditor\plugins\imagebase\styles\imagebase.css" />
+    <Content Include="public\static\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="public\static\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="public\static\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="public\static\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="public\static\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="public\static\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="public\static\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="public\static\ckeditor\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="public\static\ckeditor\plugins\preview\preview.html" />
+    <Content Include="public\static\ckeditor\plugins\scayt\CHANGELOG.md" />
+    <Content Include="public\static\ckeditor\plugins\scayt\dialogs\dialog.css" />
+    <Content Include="public\static\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="public\static\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="public\static\ckeditor\plugins\scayt\README.md" />
+    <Content Include="public\static\ckeditor\plugins\scayt\skins\moono-lisa\scayt.css" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="public\static\ckeditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\angel_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\angry_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\broken_heart.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\confused_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\cry_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\devil_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\embarrassed_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\embarrassed_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\envelope.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\heart.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\heart.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\kiss.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\lightbulb.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\omg_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\regular_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\sad_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\shades_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\teeth_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\thumbs_down.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\thumbs_up.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\tongue_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\tongue_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="public\static\ckeditor\plugins\smiley\images\wink_smile.png" />
+    <Content Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="public\static\ckeditor\plugins\tableselection\styles\tableselection.css" />
+    <Content Include="public\static\ckeditor\plugins\templates\dialogs\templates.css" />
+    <Content Include="public\static\ckeditor\plugins\templates\templates\images\template1.gif" />
+    <Content Include="public\static\ckeditor\plugins\templates\templates\images\template2.gif" />
+    <Content Include="public\static\ckeditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="public\static\ckeditor\plugins\widget\images\handle.png" />
+    <Content Include="public\static\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="public\static\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="public\static\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="public\static\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="public\static\ckeditor\plugins\wsc\README.md" />
+    <Content Include="public\static\ckeditor\plugins\wsc\skins\moono-lisa\wsc.css" />
+    <Content Include="public\static\ckeditor\samples\css\samples.css" />
+    <Content Include="public\static\ckeditor\samples\img\github-top.png" />
+    <Content Include="public\static\ckeditor\samples\img\header-bg.png" />
+    <Content Include="public\static\ckeditor\samples\img\header-separator.png" />
+    <Content Include="public\static\ckeditor\samples\img\logo.png" />
+    <Content Include="public\static\ckeditor\samples\img\logo.svg" />
+    <Content Include="public\static\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="public\static\ckeditor\samples\old\ajax.html" />
+    <Content Include="public\static\ckeditor\samples\old\api.html" />
+    <Content Include="public\static\ckeditor\samples\old\appendto.html" />
+    <Content Include="public\static\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="public\static\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="public\static\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="public\static\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="public\static\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="public\static\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="public\static\ckeditor\samples\old\divreplace.html" />
+    <Content Include="public\static\ckeditor\samples\old\easyimage\easyimage.html" />
+    <Content Include="public\static\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="public\static\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="public\static\ckeditor\samples\old\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="public\static\ckeditor\samples\old\htmlwriter\outputforflash.html" />
+    <Content Include="public\static\ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="public\static\ckeditor\samples\old\index.html" />
+    <Content Include="public\static\ckeditor\samples\old\inlineall.html" />
+    <Content Include="public\static\ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="public\static\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="public\static\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="public\static\css\main.css" />
+    <Content Include="public\static\img\icons\android-chrome-192x192.png" />
+    <Content Include="public\static\img\icons\android-chrome-512x512.png" />
+    <Content Include="public\static\img\icons\apple-touch-icon-120x120.png" />
+    <Content Include="public\static\img\icons\apple-touch-icon-152x152.png" />
+    <Content Include="public\static\img\icons\apple-touch-icon-180x180.png" />
+    <Content Include="public\static\img\icons\apple-touch-icon-60x60.png" />
+    <Content Include="public\static\img\icons\apple-touch-icon-76x76.png" />
+    <Content Include="public\static\img\icons\apple-touch-icon.png" />
+    <Content Include="public\static\img\icons\favicon-16x16.png" />
+    <Content Include="public\static\img\icons\favicon-32x32.png" />
+    <Content Include="public\static\img\icons\msapplication-icon-144x144.png" />
+    <Content Include="public\static\img\icons\mstile-150x150.png" />
+    <Content Include="public\static\img\icons\safari-pinned-tab.svg" />
+    <Content Include="src\App.vue" />
+    <Content Include="src\assets\logo.png" />
+    <Content Include="src\components\Commons\DateTimePicker\DatePicker.vue" />
+    <Content Include="src\components\Commons\DateTimePicker\DateRangePicker.vue" />
+    <Content Include="src\components\Commons\DateTimePicker\DateTimePicker.vue" />
+    <Content Include="src\components\Commons\DateTimePicker\TimePicker.vue" />
+    <Content Include="src\components\Commons\VChooseFile\VChooseFile.vue" />
+    <Content Include="src\components\Commons\VueCkeditor\VueCkeditor.vue" />
+    <Content Include="src\components\Layout\LeftSideBar.vue" />
+    <Content Include="src\components\LienHe\DanhSachLienHe.vue" />
+    <Content Include="src\components\LienHe\ThemSuaLienHe.vue" />
+    <Content Include="src\components\Login\Login.vue" />
+    <Content Include="src\components\QuanLyBaiViet\BaiViet\DanhSachBaiViet.vue" />
+    <Content Include="src\components\QuanLyBaiViet\BaiViet\ThemSuaBaiViet.vue" />
+    <Content Include="src\components\QuanLyBaiViet\ChuyenMuc\DanhSachChuyenMuc.vue" />
+    <Content Include="src\components\QuanLyBaiViet\ChuyenMuc\ThemSuaChuyenMuc.vue" />
+    <Content Include="src\components\QuanLyTaiKhoan\LoaiTaiKhoan\DanhSachLoaiTaiKhoan.vue" />
+    <Content Include="src\components\QuanLyTaiKhoan\LoaiTaiKhoan\ThemSuaLoaiTaiKhoan.vue" />
+    <Content Include="src\components\QuanLyThongTin\Album\DanhSachAlbum.vue" />
+    <Content Include="src\components\QuanLyThongTin\Album\ThemSuaAlbum.vue" />
+    <Content Include="src\components\QuanLyThongTin\CaSy\DanhSachCaSy.vue" />
+    <Content Include="src\components\QuanLyThongTin\CaSy\ThemSuaCaSy.vue" />
+    <Content Include="src\components\QuanLyThongTin\SuKien\DanhSachSuKien.vue" />
+    <Content Include="src\components\QuanLyThongTin\SuKien\ThemSuaSuKien.vue" />
+    <Content Include="src\components\QuanLyThongTin\TheLoaiNhac\DanhSachTheLoai.vue" />
+    <Content Include="src\components\QuanLyThongTin\TheLoaiNhac\ThemSuaTheLoai.vue" />
+    <Content Include="src\components\Users\ChangePassword.vue" />
+    <Content Include="src\components\Users\DanhSachUsers.vue" />
+    <Content Include="src\components\Users\ThemSuaUsers.vue" />
+    <Content Include="src\plugins\CalendarApp\components\Agenda.vue" />
+    <Content Include="src\plugins\CalendarApp\components\AgendaDay.vue" />
+    <Content Include="src\plugins\CalendarApp\components\AgendaEvent.vue" />
+    <Content Include="src\plugins\CalendarApp\components\Calendar.vue" />
+    <Content Include="src\plugins\CalendarApp\components\CalendarApp.vue" />
+    <Content Include="src\plugins\CalendarApp\components\CalendarEvent.vue" />
+    <Content Include="src\plugins\CalendarApp\components\CalendarEventChip.vue" />
+    <Content Include="src\plugins\CalendarApp\components\CalendarEventCreatePopover.vue" />
+    <Content Include="src\plugins\CalendarApp\components\CalendarEventPlaceholder.vue" />
+    <Content Include="src\plugins\CalendarApp\components\CalendarEventPopover.vue" />
+    <Content Include="src\plugins\CalendarApp\components\CalendarEventTime.vue" />
+    <Content Include="src\plugins\CalendarApp\components\CalendarEventTimePlaceholder.vue" />
+    <Content Include="src\plugins\CalendarApp\components\Day.vue" />
+    <Content Include="src\plugins\CalendarApp\components\DayPicker.vue" />
+    <Content Include="src\plugins\CalendarApp\components\DayRow.vue" />
+    <Content Include="src\plugins\CalendarApp\components\DaysView.vue" />
+    <Content Include="src\plugins\CalendarApp\components\DayTimes.vue" />
+    <Content Include="src\plugins\CalendarApp\components\Event.vue" />
+    <Content Include="src\plugins\CalendarApp\components\EventDialog.vue" />
+    <Content Include="src\plugins\CalendarApp\components\Gestures.vue" />
+    <Content Include="src\plugins\CalendarApp\components\IdentifierChip.vue" />
+    <Content Include="src\plugins\CalendarApp\components\Schedule.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleActions.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleForecast.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleFrequencyDay.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleFrequencyDayOfWeek.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleFrequencyMonth.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleFrequencyWeek.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleFrequencyYear.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleModifier.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleSpan.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleTime.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleTimes.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleType.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleTypeCustom.vue" />
+    <Content Include="src\plugins\CalendarApp\components\ScheduleTypeCustomDialog.vue" />
+    <Content Include="src\plugins\CalendarApp\components\WeekDayHeader.vue" />
+    <Content Include="src\plugins\CalendarApp\components\WeekHeader.vue" />
+    <Content Include="src\plugins\CalendarApp\components\WeeksView.vue" />
+    <Content Include="src\plugins\CalendarApp\styles\app.scss" />
+    <Content Include="src\plugins\CalendarApp\styles\lib.scss" />
+    <Content Include="src\plugins\CalendarApp\styles\lib.styl" />
+    <Content Include="src\views\Home.vue" />
+    <Content Include="tsconfig.json" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dist\" />
+    <Folder Include="node_modules\" />
+    <Folder Include="node_modules\vue-google-charts\" />
+    <Folder Include="node_modules\vue-google-charts\dist\" />
+    <Folder Include="src\apiResources\" />
+    <Folder Include="src\components\" />
+    <Folder Include="public\" />
+    <Folder Include="public\static\" />
+    <Folder Include="public\static\ckeditor\" />
+    <Folder Include="public\static\ckeditor\adapters\" />
+    <Folder Include="public\static\ckeditor\lang\" />
+    <Folder Include="public\static\ckeditor\plugins\" />
+    <Folder Include="public\static\ckeditor\plugins\a11yhelp\" />
+    <Folder Include="public\static\ckeditor\plugins\a11yhelp\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\" />
+    <Folder Include="public\static\ckeditor\plugins\about\" />
+    <Folder Include="public\static\ckeditor\plugins\about\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\about\dialogs\hidpi\" />
+    <Folder Include="public\static\ckeditor\plugins\balloonpanel\" />
+    <Folder Include="public\static\ckeditor\plugins\balloonpanel\skins\" />
+    <Folder Include="public\static\ckeditor\plugins\balloonpanel\skins\kama\" />
+    <Folder Include="public\static\ckeditor\plugins\balloonpanel\skins\moono-lisa\" />
+    <Folder Include="public\static\ckeditor\plugins\balloonpanel\skins\moono-lisa\images\" />
+    <Folder Include="public\static\ckeditor\plugins\balloonpanel\skins\moono-lisa\images\hidpi\" />
+    <Folder Include="public\static\ckeditor\plugins\balloonpanel\skins\moono\" />
+    <Folder Include="public\static\ckeditor\plugins\balloonpanel\skins\moono\images\" />
+    <Folder Include="public\static\ckeditor\plugins\balloonpanel\skins\moono\images\hidpi\" />
+    <Folder Include="public\static\ckeditor\plugins\balloontoolbar\" />
+    <Folder Include="public\static\ckeditor\plugins\balloontoolbar\skins\" />
+    <Folder Include="public\static\ckeditor\plugins\balloontoolbar\skins\kama\" />
+    <Folder Include="public\static\ckeditor\plugins\balloontoolbar\skins\moono-lisa\" />
+    <Folder Include="public\static\ckeditor\plugins\balloontoolbar\skins\moono\" />
+    <Folder Include="public\static\ckeditor\plugins\clipboard\" />
+    <Folder Include="public\static\ckeditor\plugins\clipboard\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\colordialog\" />
+    <Folder Include="public\static\ckeditor\plugins\colordialog\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\copyformatting\" />
+    <Folder Include="public\static\ckeditor\plugins\copyformatting\cursors\" />
+    <Folder Include="public\static\ckeditor\plugins\copyformatting\styles\" />
+    <Folder Include="public\static\ckeditor\plugins\dialog\" />
+    <Folder Include="public\static\ckeditor\plugins\div\" />
+    <Folder Include="public\static\ckeditor\plugins\div\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\easyimage\" />
+    <Folder Include="public\static\ckeditor\plugins\easyimage\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\easyimage\styles\" />
+    <Folder Include="public\static\ckeditor\plugins\find\" />
+    <Folder Include="public\static\ckeditor\plugins\find\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\flash\" />
+    <Folder Include="public\static\ckeditor\plugins\flash\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\flash\images\" />
+    <Folder Include="public\static\ckeditor\plugins\forms\" />
+    <Folder Include="public\static\ckeditor\plugins\forms\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\forms\images\" />
+    <Folder Include="public\static\ckeditor\plugins\iframe\" />
+    <Folder Include="public\static\ckeditor\plugins\iframe\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\iframe\images\" />
+    <Folder Include="public\static\ckeditor\plugins\imagebase\" />
+    <Folder Include="public\static\ckeditor\plugins\imagebase\styles\" />
+    <Folder Include="public\static\ckeditor\plugins\image\" />
+    <Folder Include="public\static\ckeditor\plugins\image\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\image\images\" />
+    <Folder Include="public\static\ckeditor\plugins\link\" />
+    <Folder Include="public\static\ckeditor\plugins\link\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\link\images\" />
+    <Folder Include="public\static\ckeditor\plugins\link\images\hidpi\" />
+    <Folder Include="public\static\ckeditor\plugins\liststyle\" />
+    <Folder Include="public\static\ckeditor\plugins\liststyle\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\magicline\" />
+    <Folder Include="public\static\ckeditor\plugins\magicline\images\" />
+    <Folder Include="public\static\ckeditor\plugins\magicline\images\hidpi\" />
+    <Folder Include="public\static\ckeditor\plugins\pagebreak\" />
+    <Folder Include="public\static\ckeditor\plugins\pagebreak\images\" />
+    <Folder Include="public\static\ckeditor\plugins\pastefromword\" />
+    <Folder Include="public\static\ckeditor\plugins\pastefromword\filter\" />
+    <Folder Include="public\static\ckeditor\plugins\preview\" />
+    <Folder Include="public\static\ckeditor\plugins\scayt\" />
+    <Folder Include="public\static\ckeditor\plugins\scayt\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\scayt\skins\" />
+    <Folder Include="public\static\ckeditor\plugins\scayt\skins\moono-lisa\" />
+    <Folder Include="public\static\ckeditor\plugins\showblocks\" />
+    <Folder Include="public\static\ckeditor\plugins\showblocks\images\" />
+    <Folder Include="public\static\ckeditor\plugins\smiley\" />
+    <Folder Include="public\static\ckeditor\plugins\smiley\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\smiley\images\" />
+    <Folder Include="public\static\ckeditor\plugins\specialchar\" />
+    <Folder Include="public\static\ckeditor\plugins\specialchar\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\" />
+    <Folder Include="public\static\ckeditor\plugins\tableselection\" />
+    <Folder Include="public\static\ckeditor\plugins\tableselection\styles\" />
+    <Folder Include="public\static\ckeditor\plugins\tabletools\" />
+    <Folder Include="public\static\ckeditor\plugins\tabletools\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\table\" />
+    <Folder Include="public\static\ckeditor\plugins\table\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\templates\" />
+    <Folder Include="public\static\ckeditor\plugins\templates\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\templates\templates\" />
+    <Folder Include="public\static\ckeditor\plugins\templates\templates\images\" />
+    <Folder Include="public\static\ckeditor\plugins\widget\" />
+    <Folder Include="public\static\ckeditor\plugins\widget\images\" />
+    <Folder Include="public\static\ckeditor\plugins\wsc\" />
+    <Folder Include="public\static\ckeditor\plugins\wsc\dialogs\" />
+    <Folder Include="public\static\ckeditor\plugins\wsc\skins\" />
+    <Folder Include="public\static\ckeditor\plugins\wsc\skins\moono-lisa\" />
+    <Folder Include="public\static\ckeditor\samples\" />
+    <Folder Include="public\static\ckeditor\samples\css\" />
+    <Folder Include="public\static\ckeditor\samples\img\" />
+    <Folder Include="public\static\ckeditor\samples\js\" />
+    <Folder Include="public\static\ckeditor\samples\old\" />
+    <Folder Include="public\static\ckeditor\samples\old\assets\" />
+    <Folder Include="public\static\ckeditor\samples\old\assets\inlineall\" />
+    <Folder Include="public\static\ckeditor\samples\old\assets\outputxhtml\" />
+    <Folder Include="public\static\ckeditor\samples\old\assets\uilanguages\" />
+    <Folder Include="public\static\ckeditor\samples\old\dialog\" />
+    <Folder Include="public\static\ckeditor\samples\old\dialog\assets\" />
+    <Folder Include="public\static\ckeditor\samples\old\easyimage\" />
+    <Folder Include="public\static\ckeditor\samples\old\enterkey\" />
+    <Folder Include="public\static\ckeditor\samples\old\htmlwriter\" />
+    <Folder Include="public\static\ckeditor\samples\old\htmlwriter\assets\" />
+    <Folder Include="public\static\ckeditor\samples\old\htmlwriter\assets\outputforflash\" />
+    <Folder Include="public\static\ckeditor\samples\old\magicline\" />
+    <Folder Include="public\static\ckeditor\samples\old\toolbar\" />
+    <Folder Include="public\static\ckeditor\samples\old\wysiwygarea\" />
+    <Folder Include="public\static\css\" />
+    <Folder Include="public\static\img\" />
+    <Folder Include="public\static\img\icons\" />
+    <Folder Include="src\" />
+    <Folder Include="src\assets\" />
+    <Folder Include="src\components\Commons\" />
+    <Folder Include="src\components\Commons\DateTimePicker\" />
+    <Folder Include="src\components\Commons\VChooseFile\" />
+    <Folder Include="src\components\Commons\VueCkeditor\" />
+    <Folder Include="src\components\Layout\" />
+    <Folder Include="src\components\Login\" />
+    <Folder Include="src\components\LienHe\" />
+    <Folder Include="src\components\QuanLyTaiKhoan\" />
+    <Folder Include="src\components\QuanLyTaiKhoan\TaiKhoanNhanVien\" />
+    <Folder Include="src\components\QuanLyTaiKhoan\LoaiTaiKhoan\" />
+    <Folder Include="src\components\QuanLyNhac\" />
+    <Folder Include="src\components\QuanLyNhac\BaiHat\" />
+    <Folder Include="src\components\QuanLyNhac\Radio\" />
+    <Folder Include="src\components\QuanLyThongTin\" />
+    <Folder Include="src\components\QuanLyBaiViet\" />
+    <Folder Include="src\components\QuanLyBaiViet\BaiViet\" />
+    <Folder Include="src\components\QuanLyBaiViet\ChuyenMuc\" />
+    <Folder Include="src\components\QuanLyThongTin\Album\" />
+    <Folder Include="src\components\QuanLyThongTin\SuKien\" />
+    <Folder Include="src\components\QuanLyThongTin\CaSy\" />
+    <Folder Include="src\components\QuanLyThongTin\TheLoaiNhac\" />
+    <Folder Include="src\components\Users\" />
+    <Folder Include="src\models\" />
+    <Folder Include="src\Utils\" />
+    <Folder Include="src\plugins\" />
+    <Folder Include="src\plugins\CalendarApp\components\" />
+    <Folder Include="src\plugins\CalendarApp\locales\" />
+    <Folder Include="src\plugins\CalendarApp\" />
+    <Folder Include="src\plugins\CalendarApp\styles\" />
+    <Folder Include="src\store\" />
+    <Folder Include="src\views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\apiResources\AlbumApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\Album_BaiHatApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\BaiHatApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\BaiVietApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\BaseApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\CaSyApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\CaSy_BaiHatApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\ChuyenMucApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\ChuyenMuc_BaiVietApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\EventApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\FileUploadApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\LienHeApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\LoaiNhanVienApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\NhanVienApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\PaginatedResponse.ts" />
+    <TypeScriptCompile Include="src\apiResources\QuanHuyenApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\RadioApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\TheLoaiApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\TinhThanhApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\UsersApi.ts" />
+    <TypeScriptCompile Include="src\apiResources\XaPhuongApi.ts" />
+    <TypeScriptCompile Include="src\auth.ts" />
+    <TypeScriptCompile Include="src\apisServer.ts" />
+    <TypeScriptCompile Include="src\components\Commons\DateTimePicker\index.ts" />
+    <TypeScriptCompile Include="src\components\Commons\VChooseFile\index.ts" />
+    <TypeScriptCompile Include="src\components\Commons\VueCkeditor\index.ts" />
+    <TypeScriptCompile Include="src\EventBus.ts" />
+    <TypeScriptCompile Include="src\HTTPServices.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\models\AccessToken.ts" />
+    <TypeScriptCompile Include="src\models\Album.ts" />
+    <TypeScriptCompile Include="src\models\Album_BaiHat.ts" />
+    <TypeScriptCompile Include="src\models\ApplicationDbContext.ts" />
+    <TypeScriptCompile Include="src\models\BaiHat.ts" />
+    <TypeScriptCompile Include="src\models\BaiViet.ts" />
+    <TypeScriptCompile Include="src\models\CaSy.ts" />
+    <TypeScriptCompile Include="src\models\CaSy_BaiHat.ts" />
+    <TypeScriptCompile Include="src\models\ChuyenMuc.ts" />
+    <TypeScriptCompile Include="src\models\ChuyenMuc_BaiViet.ts" />
+    <TypeScriptCompile Include="src\models\Event.ts" />
+    <TypeScriptCompile Include="src\models\FileUpload.ts" />
+    <TypeScriptCompile Include="src\models\LienHe.ts" />
+    <TypeScriptCompile Include="src\models\LoaiNhanVien.ts" />
+    <TypeScriptCompile Include="src\models\LoginForm.ts" />
+    <TypeScriptCompile Include="src\models\NhanVien.ts" />
+    <TypeScriptCompile Include="src\models\QuanHuyen.ts" />
+    <TypeScriptCompile Include="src\models\Radio.ts" />
+    <TypeScriptCompile Include="src\models\TheLoai.ts" />
+    <TypeScriptCompile Include="src\models\TinhThanh.ts" />
+    <TypeScriptCompile Include="src\models\User.ts" />
+    <TypeScriptCompile Include="src\models\XaPhuong.ts" />
+    <TypeScriptCompile Include="src\registerServiceWorker.ts" />
+    <TypeScriptCompile Include="src\router.ts" />
+    <TypeScriptCompile Include="src\shims.d.ts" />
+    <TypeScriptCompile Include="src\store\mutations.ts" />
+    <TypeScriptCompile Include="src\store\plugins.ts" />
+    <TypeScriptCompile Include="src\store\state.ts" />
+    <TypeScriptCompile Include="src\store\store.ts" />
+    <TypeScriptCompile Include="src\Utils\CommonFunctions.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include=".postcssrc.js" />
+    <Compile Include="public\static\ckfinder.js" />
+    <Compile Include="public\static\ckeditor\adapters\jquery.js" />
+    <Compile Include="public\static\ckeditor\lang\af.js" />
+    <Compile Include="public\static\ckeditor\lang\ar.js" />
+    <Compile Include="public\static\ckeditor\lang\az.js" />
+    <Compile Include="public\static\ckeditor\lang\bg.js" />
+    <Compile Include="public\static\ckeditor\lang\bn.js" />
+    <Compile Include="public\static\ckeditor\lang\bs.js" />
+    <Compile Include="public\static\ckeditor\lang\ca.js" />
+    <Compile Include="public\static\ckeditor\lang\cs.js" />
+    <Compile Include="public\static\ckeditor\lang\cy.js" />
+    <Compile Include="public\static\ckeditor\lang\da.js" />
+    <Compile Include="public\static\ckeditor\lang\de-ch.js" />
+    <Compile Include="public\static\ckeditor\lang\de.js" />
+    <Compile Include="public\static\ckeditor\lang\el.js" />
+    <Compile Include="public\static\ckeditor\lang\en-au.js" />
+    <Compile Include="public\static\ckeditor\lang\en-ca.js" />
+    <Compile Include="public\static\ckeditor\lang\en-gb.js" />
+    <Compile Include="public\static\ckeditor\lang\en.js" />
+    <Compile Include="public\static\ckeditor\lang\eo.js" />
+    <Compile Include="public\static\ckeditor\lang\es-mx.js" />
+    <Compile Include="public\static\ckeditor\lang\es.js" />
+    <Compile Include="public\static\ckeditor\lang\et.js" />
+    <Compile Include="public\static\ckeditor\lang\eu.js" />
+    <Compile Include="public\static\ckeditor\lang\fa.js" />
+    <Compile Include="public\static\ckeditor\lang\fi.js" />
+    <Compile Include="public\static\ckeditor\lang\fo.js" />
+    <Compile Include="public\static\ckeditor\lang\fr-ca.js" />
+    <Compile Include="public\static\ckeditor\lang\fr.js" />
+    <Compile Include="public\static\ckeditor\lang\gl.js" />
+    <Compile Include="public\static\ckeditor\lang\gu.js" />
+    <Compile Include="public\static\ckeditor\lang\he.js" />
+    <Compile Include="public\static\ckeditor\lang\hi.js" />
+    <Compile Include="public\static\ckeditor\lang\hr.js" />
+    <Compile Include="public\static\ckeditor\lang\hu.js" />
+    <Compile Include="public\static\ckeditor\lang\id.js" />
+    <Compile Include="public\static\ckeditor\lang\is.js" />
+    <Compile Include="public\static\ckeditor\lang\it.js" />
+    <Compile Include="public\static\ckeditor\lang\ja.js" />
+    <Compile Include="public\static\ckeditor\lang\ka.js" />
+    <Compile Include="public\static\ckeditor\lang\km.js" />
+    <Compile Include="public\static\ckeditor\lang\ko.js" />
+    <Compile Include="public\static\ckeditor\lang\ku.js" />
+    <Compile Include="public\static\ckeditor\lang\lt.js" />
+    <Compile Include="public\static\ckeditor\lang\lv.js" />
+    <Compile Include="public\static\ckeditor\lang\mk.js" />
+    <Compile Include="public\static\ckeditor\lang\mn.js" />
+    <Compile Include="public\static\ckeditor\lang\ms.js" />
+    <Compile Include="public\static\ckeditor\lang\nb.js" />
+    <Compile Include="public\static\ckeditor\lang\nl.js" />
+    <Compile Include="public\static\ckeditor\lang\no.js" />
+    <Compile Include="public\static\ckeditor\lang\oc.js" />
+    <Compile Include="public\static\ckeditor\lang\pl.js" />
+    <Compile Include="public\static\ckeditor\lang\pt-br.js" />
+    <Compile Include="public\static\ckeditor\lang\pt.js" />
+    <Compile Include="public\static\ckeditor\lang\ro.js" />
+    <Compile Include="public\static\ckeditor\lang\ru.js" />
+    <Compile Include="public\static\ckeditor\lang\si.js" />
+    <Compile Include="public\static\ckeditor\lang\sk.js" />
+    <Compile Include="public\static\ckeditor\lang\sl.js" />
+    <Compile Include="public\static\ckeditor\lang\sq.js" />
+    <Compile Include="public\static\ckeditor\lang\sr-latn.js" />
+    <Compile Include="public\static\ckeditor\lang\sr.js" />
+    <Compile Include="public\static\ckeditor\lang\sv.js" />
+    <Compile Include="public\static\ckeditor\lang\th.js" />
+    <Compile Include="public\static\ckeditor\lang\tr.js" />
+    <Compile Include="public\static\ckeditor\lang\tt.js" />
+    <Compile Include="public\static\ckeditor\lang\ug.js" />
+    <Compile Include="public\static\ckeditor\lang\uk.js" />
+    <Compile Include="public\static\ckeditor\lang\vi.js" />
+    <Compile Include="public\static\ckeditor\lang\zh-cn.js" />
+    <Compile Include="public\static\ckeditor\lang\zh.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\az.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\en-au.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\es-mx.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\oc.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Compile Include="public\static\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Compile Include="public\static\ckeditor\plugins\about\dialogs\about.js" />
+    <Compile Include="public\static\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Compile Include="public\static\ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Compile Include="public\static\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Compile Include="public\static\ckeditor\plugins\div\dialogs\div.js" />
+    <Compile Include="public\static\ckeditor\plugins\easyimage\dialogs\easyimagealt.js" />
+    <Compile Include="public\static\ckeditor\plugins\find\dialogs\find.js" />
+    <Compile Include="public\static\ckeditor\plugins\flash\dialogs\flash.js" />
+    <Compile Include="public\static\ckeditor\plugins\forms\dialogs\button.js" />
+    <Compile Include="public\static\ckeditor\plugins\forms\dialogs\checkbox.js" />
+    <Compile Include="public\static\ckeditor\plugins\forms\dialogs\form.js" />
+    <Compile Include="public\static\ckeditor\plugins\forms\dialogs\hiddenfield.js" />
+    <Compile Include="public\static\ckeditor\plugins\forms\dialogs\radio.js" />
+    <Compile Include="public\static\ckeditor\plugins\forms\dialogs\select.js" />
+    <Compile Include="public\static\ckeditor\plugins\forms\dialogs\textarea.js" />
+    <Compile Include="public\static\ckeditor\plugins\forms\dialogs\textfield.js" />
+    <Compile Include="public\static\ckeditor\plugins\iframe\dialogs\iframe.js" />
+    <Compile Include="public\static\ckeditor\plugins\image\dialogs\image.js" />
+    <Compile Include="public\static\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Compile Include="public\static\ckeditor\plugins\link\dialogs\link.js" />
+    <Compile Include="public\static\ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Compile Include="public\static\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Compile Include="public\static\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Compile Include="public\static\ckeditor\plugins\smiley\dialogs\smiley.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\az.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Compile Include="public\static\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Compile Include="public\static\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Compile Include="public\static\ckeditor\plugins\table\dialogs\table.js" />
+    <Compile Include="public\static\ckeditor\plugins\templates\dialogs\templates.js" />
+    <Compile Include="public\static\ckeditor\plugins\templates\templates\default.js" />
+    <Compile Include="public\static\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Compile Include="public\static\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Compile Include="public\static\ckeditor\samples\js\sample.js" />
+    <Compile Include="public\static\ckeditor\samples\js\sf.js" />
+    <Compile Include="public\static\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Compile Include="public\static\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Compile Include="public\static\ckeditor\samples\old\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Compile Include="src\plugins\CalendarApp\colors.js" />
+    <Compile Include="src\plugins\CalendarApp\component.js" />
+    <Compile Include="src\plugins\CalendarApp\components\index.js" />
+    <Compile Include="src\plugins\CalendarApp\components\ScheduleFrequency.js" />
+    <Compile Include="src\plugins\CalendarApp\defaults.js" />
+    <Compile Include="src\plugins\CalendarApp\functions.js" />
+    <Compile Include="src\plugins\CalendarApp\icons.js" />
+    <Compile Include="src\plugins\CalendarApp\lib.js" />
+    <Compile Include="src\plugins\CalendarApp\locales\vi.js" />
+    <Compile Include="src\plugins\CalendarApp\locales\en.js" />
+    <Compile Include="src\plugins\CalendarApp\locales\fr.js" />
+    <Compile Include="src\plugins\CalendarApp\locales\index.js" />
+    <Compile Include="src\plugins\CalendarApp\plugin.js" />
+    <Compile Include="src\plugins\VueCkeditor.js" />
+    <Compile Include="src\plugins\vuetify.js" />
+    <Compile Include="vue.config.js" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <PropertyGroup>
+    <PostBuildEvent>
+      npm run build
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,251 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CMS.Core\CMS.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Gen\outputAPIs\CamNhanHocVienController.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\CamNhanHocVien.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputAPIs\ChuyenMucController.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\ChuyenMuc.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputAPIs\ChuyenMucTrangController.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\ChuyenMucTrang.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputAPIs\DangKyKhoaHocController.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\DangKyKhoaHoc.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputAPIs\DiemNoiBatController.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\DiemNoiBat.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputAPIs\KhoaHocController.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\KhoaHoc.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputAPIs\LoiNhanController.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\LoiNhan.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputAPIs\NoiDungTinhController.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\NoiDungTinh.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputAPIs\TrangController.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\Trang.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputDTOs\CamNhanHocVienDTO.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\CamNhanHocVien.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputDTOs\ChuyenMucDTO.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\ChuyenMuc.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputDTOs\ChuyenMucTrangDTO.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\ChuyenMucTrang.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputDTOs\DangKyKhoaHocDTO.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\DangKyKhoaHoc.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputDTOs\DiemNoiBatDTO.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\DiemNoiBat.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputDTOs\KhoaHocDTO.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\KhoaHoc.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputDTOs\LoiNhanDTO.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\LoiNhan.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputDTOs\NoiDungTinhDTO.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\NoiDungTinh.cs</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Gen\outputDTOs\TrangDTO.cs">
+      <CustomToolNamespace>..\CMS.Core\Entities\Trang.cs</CustomToolNamespace>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Gen\outputTypescriptAPIs\AlbumApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\AlbumController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\Album_BaiHatApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\Album_BaiHatController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\AuthApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\AuthController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\BaiHatApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\BaiHatController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\BaiVietApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\BaiVietController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\CamNhanHocVienApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Apis\CamNhanHocVienController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\CaSyApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\CaSyController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\CaSy_BaiHatApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\CaSy_BaiHatController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\ChuyenMucApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\ChuyenMucController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\ChuyenMucTrangApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Apis\ChuyenMucTrangController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\ChuyenMuc_BaiVietApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\ChuyenMuc_BaiVietController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\DangKyKhoaHocApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Apis\DangKyKhoaHocController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\DiemNoiBatApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Apis\DiemNoiBatController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\EventApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\EventController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\KhoaHocApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Apis\KhoaHocController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\LienHeApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\LienHeController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\LoaiNhanVienApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\LoaiNhanVienController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\LoiNhanApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Apis\LoiNhanController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\NhanVienApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\NhanVienController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\NoiDungTinhApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Apis\NoiDungTinhController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\QuanHuyenApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\QuanHuyenController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\RadioApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\RadioController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\TheLoaiApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\TheLoaiController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\TinhThanhApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\TinhThanhController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\TrangApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Apis\TrangController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\UsersApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\UsersController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptAPIs\XaPhuongApi.ts">
+      <CustomToolNamespace>..\CMS.Web\Controllers\API\XaPhuongController.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\AccessToken.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\AccessToken.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\Album.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\Album.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\Album_BaiHat.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\Album_BaiHat.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\ApplicationDbContext.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\ApplicationDbContext.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\BaiHat.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\BaiHat.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\BaiViet.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\BaiViet.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\CamNhanHocVienDTO.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\CamNhanHocVienDTO.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\CaSy.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\CaSy.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\CaSy_BaiHat.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\CaSy_BaiHat.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\ChuyenMuc.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\ChuyenMuc.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\ChuyenMucDTO.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\ChuyenMucDTO.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\ChuyenMucTrangDTO.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\ChuyenMucTrangDTO.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\ChuyenMuc_BaiViet.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\ChuyenMuc_BaiViet.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\DangKyKhoaHocDTO.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\DangKyKhoaHocDTO.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\DiemNoiBatDTO.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\DiemNoiBatDTO.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\Event.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\Event.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\FileUpload.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\FileUpload.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\KhoaHocDTO.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\KhoaHocDTO.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\LienHe.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\LienHe.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\LoaiNhanVien.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\LoaiNhanVien.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\LoginForm.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\LoginForm.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\LoiNhanDTO.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\LoiNhanDTO.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\NhanVien.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\NhanVien.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\NoiDungTinhDTO.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\NoiDungTinhDTO.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\PagedResult.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\PagedResult.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\Pagination.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\Pagination.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\QuanHuyen.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\QuanHuyen.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\Radio.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\Radio.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\TheLoai.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\TheLoai.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\TinhThanh.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\TinhThanh.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\TrangDTO.ts">
+      <CustomToolNamespace>..\CMS.Web\ApiModels\TrangDTO.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\User.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\User.cs</CustomToolNamespace>
+    </None>
+    <None Update="Gen\outputTypescriptDTOs\XaPhuong.ts">
+      <CustomToolNamespace>..\CMS.Models\Models\XaPhuong.cs</CustomToolNamespace>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,53 @@
+﻿@using CMS.Models
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12">
+                <nav class="breadcrumb" style="margin-bottom: 20px">
+                    <a class="breadcrumb-item" href="/">Trang chủ</a>
+                    <span class="breadcrumb-item active">
+                        Error
+                    </span>
+                </nav>
+            </div>
+        </div> <!-- end of row -->
+    </div> <!-- end of container -->
+</div>
+
+<div id="content" class="main-content-wrapper">
+
+    <!-- Start of Main Product Wrapper -->
+    <div class="main-product-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-9 col-lg-9">
+                    <main id="primary" class="site-main">
+                        <div style="background-color: #A52A2A; color: White; height: 10px;">
+                        </div>
+                        <div style="background-color: #F5F5DC; color: White; height: 170px;">
+                            <div style=" padding:20px;">
+                                <h4>
+                                    Đã có lỗi xảy ra trong khi xử lý yêu cầu của bạn.
+                                </h4>
+                                <h6>@Html.ActionLink("Trở về trang chủ", "Index", "Home")</h6>
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                        <div style="background-color: #A52A2A; color: White; height: 20px;">
+                        </div>
+                    </main> <!-- end of #primary -->
+                </div>
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div>
+    <!-- End of Main Product Wrapper -->
+    <!-- Start of Related Products -->
+    
+    <!-- End of Related Products -->
+    <!-- Start of Newsletter Section -->
+</div>

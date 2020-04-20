@@ -1,0 +1,132 @@
+﻿@using CMS.Web.Base;
+@using CMS.Models;
+@{
+    BaiViet baiViet = ViewBag.ChiTietBaiViet;
+    List<BaiViet> baiVietCungChuDe = ViewBag.BaiVietCungChuyenMuc;
+    ViewBag.Title = baiViet.TieuDe;
+}
+<style scoped>
+    img{
+        width: 100%
+    }
+    p {
+        color: black
+    }
+</style>
+<!-- Blog Details Post Thumbnail Area Start -->
+<section class="blog-details-post-thumbnail-area bg-overlay bg-img jarallax" style="background-image: url(http://localhost:8888/fileupload/download?key=@(baiViet.AnhDaiDien));">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="post-title-text">
+                    <h2>@baiViet.TieuDe</h2>
+                    <div class="post-meta">
+                        <a href="#">@baiViet.NgayDang.ToLongDateString()</a>
+                        <a href="#">Post by @baiViet.NhanVien.HoTen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Details Post Thumbnail Area End -->
+<!-- Blog Details Area Start -->
+<section class="blog-details-area section-padding-80">
+    <div class="container">
+        <!-- Post Details Text -->
+        <div class="post-details-text">
+            <div class="row justify-content-center">
+                <div class="col-2 col-md-2 col-lg-1">
+                    <!-- Post Share -->
+                    <div class="razo-post-share">
+                        <h5>Share</h5>
+                        <a href="#" data-toggle="tooltip" data-placement="left" title="Facebook" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="left" title="Twitter" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="left" title="Google Plus" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="left" title="Pinterest" class="pinterest"><i class="fa fa-pinterest"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="left" title="Instagram" class="instagram"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-10 col-md-10 col-lg-9">
+                    @Html.Raw(baiViet.NoiDung)
+                    <!-- Post Catagories -->
+                    <div class="d-flex align-items-center justify-content-between">
+                        <!-- Post Catagories -->
+                        <div class="post-catagories">
+                            <ul class="d-flex flex-wrap align-items-center">
+                                <li><i class="fa fa-tag"></i> Tag:</li>
+                                @for (int i = 0; i < baiViet.ChuyenMuc_BaiViet.Count(); i++)
+                                {
+                                    <li><a href="#">@baiViet.ChuyenMuc_BaiViet.ToArray()[i].ChuyenMuc.TenChuyenMuc</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Comments Area -->
+                    <div class="fb-comments" data-href="http://localhost:8888/BaiViet/ChiTietBaiViet/@baiViet.BaiVietID" data-numposts="10" data-width=""></div>
+
+                    <!-- Leave A Reply -->
+                    @*<div class="razo-contact-form">
+                        <h2 class="mb-4">Leave A Comment</h2>
+
+                        <form action="#" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" name="message-name" class="form-control mb-30" placeholder="Name">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="email" name="message-email" class="form-control mb-30" placeholder="Email">
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control mb-30" placeholder="Comment"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn razo-btn btn-3 mt-15">Post Comment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Details Area End -->
+<!-- Related News Area Start -->
+<div class="related-news-area">
+    <div class="container">
+        <div class="row">
+            <!-- Section Heading -->
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>RELATED STORIES</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            @for (int i = 0; i < baiVietCungChuDe.Count(); i++)
+            {
+                <!-- Single Blog Item -->
+                <div class="col-12 col-sm-6 col-lg-4 razo-blog-masonary-item mb-80">
+                    <div class="razo-blog-masonary-single-item">
+                        <!-- Post Thumbnail -->
+                        <div class="post-thumbnail">
+                            <a href="#"><img src="http://localhost:8888/fileupload/download?key=@(baiVietCungChuDe[i].AnhDaiDien)" alt=""></a>
+                        </div>
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <div class="post-date"><i class="fa fa-calendar" aria-hidden="true">@baiVietCungChuDe[i].NgayDang.ToLongDateString()</i></div>
+                            <a href="#" class="post-title">@baiVietCungChuDe[i].TieuDe</a>
+                            <p>@baiVietCungChuDe[i].MoTaNgan</p>
+                            <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = baiVietCungChuDe[i].BaiVietID })" class="btn read-more-btn">Đọc thêm <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Related News Area End -->

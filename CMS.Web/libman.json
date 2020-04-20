@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "cdnjs",
+      "library": "Swiper@4.4.1",
+      "destination": "lib/Swiper/"
+    }
+  ,
+{
+  "provider": "cdnjs",
+  "library": "jqueryui@1.12.1",
+  "destination": "lib/jqueryui/"
+}
+]
+}
