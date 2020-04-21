@@ -158,6 +158,7 @@ import { HTTP } from '../../../HTTPServices';
                 this.$validator.reset();
                 this.loadingSave = false;
                 this.isShow = true;
+                this.files = null as any;
                 this.isUpdate = isUpdate;
                 if (isUpdate) {
                     this.radioID = item.RadioID;

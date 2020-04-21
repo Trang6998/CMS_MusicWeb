@@ -13,7 +13,7 @@ namespace CMS.Controllers
     public class Album_BaiHatController : BaseApiController
     {
         [HttpGet, Route("")]
-        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
+        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null, [FromUri]int? albumID = null)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -22,8 +22,10 @@ namespace CMS.Controllers
                     pagination = new Pagination();
                 if (pagination.includeEntities)
                 {
+                    results = results.Include(x => x.BaiHat);
                 }
-
+                if (albumID.HasValue)
+                    results = results.Where(x => x.AlbumID == albumID);
                 results = results.OrderBy(x => x.AlbumID);
 
                 return Ok((await GetPaginatedResponseAsync(results, pagination)));
@@ -46,6 +48,38 @@ namespace CMS.Controllers
 
             return Ok(album_BaiHat);
         }
+        [HttpPut, Route("{albumID:int}/{baiHatID:int}")]
+        public async Task<IHttpActionResult> Update(int albumID, int baiHatID, [FromBody]Album_BaiHat album_BaiHat)
+        {
+            if (album_BaiHat.BaiHatID != baiHatID || album_BaiHat.AlbumID != albumID) return BadRequest("Id mismatch");
 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            using (var db = new ApplicationDbContext())
+            {
+                db.Entry(album_BaiHat).State = EntityState.Modified;
+
+                try
+                {
+                    await db.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException ducEx)
+                {
+                    bool exists = db.Album_BaiHat.Count(o => o.BaiHatID == baiHatID && o.AlbumID == albumID) > 0;
+                    if (!exists)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw ducEx;
+                    }
+                }
+
+                return Ok(album_BaiHat);
+            }
+        }
     }
 }

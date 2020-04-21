@@ -13,7 +13,7 @@ namespace CMS.Web.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
-                ViewBag.DanhSachAlbum = db.Album.Where(x => x.TrangThai == true).ToList();
+                ViewBag.DanhSachAlbum = db.Album.Include(x => x.Album_BaiHat).Where(x => x.TrangThai == true).ToList();
             }
             return View();
         }

@@ -22,7 +22,8 @@ namespace CMS.Controllers
                     pagination = new Pagination();
                 if (pagination.includeEntities)
                 {
-                    results = results.Include(o => o.Album_BaiHat);
+                    results = results.Include(o => o.TheLoai).Include(x => x.CaSy_BaiHat.Select(y=> y.CaSy))
+                                                             .Include(x => x.Album_BaiHat.Select(y => y.Album));
                 }
 
                 if (!string.IsNullOrWhiteSpace(keyworlds))
@@ -39,7 +40,7 @@ namespace CMS.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
-                var baiHat = await db.BaiHat
+                var baiHat = await db.BaiHat.Include(x => x.CaSy_BaiHat)
                     .SingleOrDefaultAsync(o => o.BaiHatID == baiHatID);
 
                 if (baiHat == null)
@@ -58,8 +59,18 @@ namespace CMS.Controllers
             {
                 using (var transaction = db.Database.BeginTransaction())
                 {
+                    baiHat.NgayDang = DateTime.Now;
+
+                    var lstCaSyBaiHat = baiHat.CaSy_BaiHat.ToArray();
+                    baiHat.CaSy_BaiHat = null;
+
                     db.BaiHat.Add(baiHat);
 
+                    for (int i = 0; i < lstCaSyBaiHat.Length; i++)
+                    {
+                        lstCaSyBaiHat[i].BaiHatID = baiHat.BaiHatID;
+                    }
+                    db.CaSy_BaiHat.AddRange(lstCaSyBaiHat);
                     await db.SaveChangesAsync();
                     transaction.Commit();
                 }
@@ -79,14 +90,24 @@ namespace CMS.Controllers
             }
             using (var db = new ApplicationDbContext())
             {
+                if (baiHat.CaSy_BaiHat != null)
+                {
+                    var lstChuyenMucBaiHatTraVe = baiHat.CaSy_BaiHat;
+                    var lstChuyenMucBaiHatBanDau = db.CaSy_BaiHat.Where(x => x.BaiHatID == baiHat.BaiHatID).ToList();
+                    var lstChuyenMucBaiHatCanThem = lstChuyenMucBaiHatTraVe
+                        .Where(x => !lstChuyenMucBaiHatBanDau.Select(y => y.CaSyID).Contains(x.CaSyID));
+                    var lstChuyenMucBaiHatCanXoa = lstChuyenMucBaiHatBanDau
+                        .Where(x => !lstChuyenMucBaiHatTraVe.Select(y => y.CaSyID).Contains(x.CaSyID));
+
+                    db.CaSy_BaiHat.RemoveRange(lstChuyenMucBaiHatCanXoa);
+                    db.CaSy_BaiHat.AddRange(lstChuyenMucBaiHatCanThem);
+                    baiHat.CaSy_BaiHat = null;
+                }
                 db.Entry(baiHat).State = EntityState.Modified;
 
                 try
                 {
-                    using (var transaction = db.Database.BeginTransaction())
-                    {
-                        await db.SaveChangesAsync();
-                    }
+                    await db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException ducEx)
                 {

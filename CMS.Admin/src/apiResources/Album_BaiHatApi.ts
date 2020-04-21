@@ -5,7 +5,8 @@ import { BaseApi } from '@/apiResources/BaseApi';
 import { PaginatedResponse, Pagination } from '@/apiResources/PaginatedResponse';
 import { Album_BaiHat } from '@/models/Album_BaiHat';
 export interface Album_BaiHatApiSearchParams extends Pagination {
-   keyworlds? : string
+    keyworlds?: string;
+    albumID?: number
 }
 
 class Album_BaiHatApi extends BaseApi {
@@ -28,6 +29,16 @@ class Album_BaiHatApi extends BaseApi {
             }).catch((error) => {
                 reject(error);
             })
+        });
+    }
+    update(albumID: number, baiHatID: number, album_BaiHat: Album_BaiHat): Promise<Album_BaiHat> {
+        return new Promise<Album_BaiHat>((resolve: any, reject: any) => {
+            HTTP.put(`api/album_BaiHat/${albumID}/${baiHatID}`, album_BaiHat)
+                .then((response) => {
+                    resolve(response.data);
+                }).catch((error) => {
+                    reject(error);
+                })
         });
     }
 }
