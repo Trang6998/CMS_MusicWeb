@@ -29,6 +29,7 @@ namespace CMS.Models
         public int? LuotThich { get; set; }
 
         public int? NhanVienID { get; set; }
+        public int? SoThuTu { get; set; }
 
         public bool? TrangThai { get; set; }
 

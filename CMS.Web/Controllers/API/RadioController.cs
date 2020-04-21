@@ -61,7 +61,8 @@ namespace CMS.Controllers
                     radio.LuotXem = 0;
                     radio.NhanVienID = 1;
                     radio.NgayDang = DateTime.Now;
-                    
+                    radio.SoThuTu = db.Radio.Count() + 1;
+
                     db.Radio.Add(radio);
 
                     await db.SaveChangesAsync();

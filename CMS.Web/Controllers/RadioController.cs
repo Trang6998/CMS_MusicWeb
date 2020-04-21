@@ -29,6 +29,8 @@ namespace CMS.Web.Controllers
                 db.SaveChanges();
 
                 ViewBag.ChiTietRadio = radio;
+                ViewBag.RadioTruoc = query.FirstOrDefault(x => x.SoThuTu < radio.SoThuTu && x.TrangThai == true);
+                ViewBag.RadioSau = query.FirstOrDefault(x => x.SoThuTu > radio.SoThuTu && x.TrangThai == true);
             }
             return View();
         }
