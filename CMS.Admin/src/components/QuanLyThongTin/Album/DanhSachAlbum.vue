@@ -32,7 +32,7 @@
                                         <td class="text-center">{{ index + 1 }}</td>
                                         <td class="text-center">{{ item.TenAlbum }}</td>
                                         <td class="text-center">{{ item.SoBaiHat }}</td>
-                                        <td class="text-center">{{ item.TrangThai == true? "Hiển thị" : "Ẩn" }}</td>
+                                        <td class="text-center"><a @click="capNhatTrangThai(item)">{{ item.TrangThai == true? "Hiển thị" : "Ẩn" }}</a></td>
                                         <td>
                                             <v-layout nowrap style="place-content: center">
                                                 <v-btn text icon small @click="showModalThemSua(true, item)" class="ma-0">
@@ -106,6 +106,17 @@
             },
             showModalThemSua(isUpdate: boolean, item: any) {
                 (this.$refs.themSuaAlbum as any).show(isUpdate, item);
+            },
+            capNhatTrangThai(item: Album) {
+                item.TrangThai = !item.TrangThai
+                this.loadingTable = true
+                AlbumApi.update(item.AlbumID, item).then(res => {
+                    this.loadingTable = false;
+                    this.getDataFromApi(this.searchParamsAlbum)
+                }).catch(res => {
+                    this.loadingTable = false;
+                    this.$snotify.error('Cập nhật album thất bại!');
+                });
             },
             confirmDelete(chuyenMuc: Album): void {
                 this.selectedAlbum = chuyenMuc;

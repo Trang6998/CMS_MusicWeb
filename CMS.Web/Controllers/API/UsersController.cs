@@ -23,7 +23,7 @@ namespace CMS.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
-                IQueryable<User> results = db.User;
+                IQueryable<User> results = db.User.Include(x => x.NhanVien).Include(x => x.NhanVien.LoaiNhanVien);
 
                 if (!string.IsNullOrWhiteSpace(q))
                     results = results.Where(o => o.UserName.Contains(q) || o.Email.Contains(q));
@@ -40,7 +40,7 @@ namespace CMS.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
-                var users = await db.User
+                var users = await db.User.Include(x => x.NhanVien)
                     .SingleOrDefaultAsync(o => o.UserId == userId);
 
                 if (users == null)
@@ -94,6 +94,7 @@ namespace CMS.Controllers
             using (var db = new ApplicationDbContext())
             {
                 User userExits = db.User.Find(userId);
+                NhanVien nhanVienExits = users.NhanVien;
 
                 if (userExits.UserName != users.UserName)
                 {
@@ -110,6 +111,7 @@ namespace CMS.Controllers
                 userExits.Email = users.Email;
                 userExits.Active = users.Active;
                 db.Entry(userExits).State = EntityState.Modified;
+                db.Entry(nhanVienExits).State = EntityState.Modified;
                 var dsAccessTokens = db.AccessToken.Where(x => x.UserName == userExits.UserName);
                 db.AccessToken.RemoveRange(dsAccessTokens);
                 await db.SaveChangesAsync();

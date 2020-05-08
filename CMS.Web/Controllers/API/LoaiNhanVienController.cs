@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/loaiNhanVien")]
     public class LoaiNhanVienController : BaseApiController
     {
-        [HttpGet, Route("")]
+        [AuthorizeUser, HttpGet, Route("")]
         public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
         {
             using (var db = new ApplicationDbContext())
@@ -34,7 +35,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpGet, Route("{loaiNhanVienID:int}")]
+        [AuthorizeUser, HttpGet, Route("{loaiNhanVienID:int}")]
         public async Task<IHttpActionResult> Get(int loaiNhanVienID)
         {
             using (var db = new ApplicationDbContext())
@@ -49,7 +50,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]LoaiNhanVien loaiNhanVien)
         {
             if (loaiNhanVien.LoaiNhanVienID != 0) return BadRequest("Invalid LoaiNhanVienID");
@@ -68,7 +69,7 @@ namespace CMS.Controllers
             return Ok(loaiNhanVien);
         }
 
-        [HttpPut, Route("{loaiNhanVienID:int}")]
+        [AuthorizeUser, HttpPut, Route("{loaiNhanVienID:int}")]
         public async Task<IHttpActionResult> Update(int loaiNhanVienID, [FromBody]LoaiNhanVien loaiNhanVien)
         {
             if (loaiNhanVien.LoaiNhanVienID != loaiNhanVienID) return BadRequest("Id mismatch");
@@ -102,7 +103,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{loaiNhanVienID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{loaiNhanVienID:int}")]
         public async Task<IHttpActionResult> Delete(int loaiNhanVienID)
         {
             using (var db = new ApplicationDbContext())

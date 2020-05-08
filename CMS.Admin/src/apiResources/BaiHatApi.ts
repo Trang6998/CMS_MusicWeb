@@ -5,7 +5,12 @@ import { BaseApi } from '@/apiResources/BaseApi';
 import { PaginatedResponse, Pagination } from '@/apiResources/PaginatedResponse';
 import { BaiHat } from '@/models/BaiHat';
 export interface BaiHatApiSearchParams extends Pagination {
-   keyworlds? : string
+    keyworlds?: string;
+    caSyID?: number;
+    theLoaiID?: number;
+    albumID?: number;
+    ngayDangTu?: Date;
+    ngayDangDen?: Date;
 }
 
 class BaiHatApi extends BaseApi {

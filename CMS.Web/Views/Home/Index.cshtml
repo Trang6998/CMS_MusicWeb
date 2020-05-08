@@ -3,6 +3,9 @@
 @{
     List<ChuyenMuc> dsChuyenMuc = ViewBag.DanhSachChuyenMuc;
     List<BaiViet> dsTinMoi = ViewBag.DanhSachTinMoi;
+    List<BaiHat> dsBaiHat = ViewBag.DanhSachNhac;
+    List<CaSy> danhSachCaSy = ViewBag.DanhSachCaSy;
+
     ViewBag.Title = "Trang Chủ";
 }
 <!-- Preloader -->
@@ -209,7 +212,7 @@
             <!-- Show All Button -->
             <div class="col-sm-6">
                 <div class="show-all-button mb-50 text-right">
-                    <a href="#" class="btn show-all-btn">Show All Trending (Top 10)</a>
+                    <a href="@Url.Action("Index", "CaSy")" class="btn show-all-btn">Show All Charts</a>
                 </div>
             </div>
         </div>
@@ -217,110 +220,39 @@
         <div class="row">
             <div class="col-12">
 
-                <!-- Single Music Chart -->
-                <div class="single-music-chart d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="100ms">
-                    <!-- Music Content -->
-                    <div class="music-content d-flex align-items-center">
-                        <div class="sl-number">
-                            <h5>1.</h5>
-                        </div>
-                        <div class="music-thumb">
-                            <img src="img/bg-img/25.jpg" alt="">
-                        </div>
-                        <div class="audio-player">
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3">
-                            </audio>
-                        </div>
-                        <div class="music-title">
-                            <h5>Way Back BaiViet - <span>RadioDaily Show</span></h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Music Chart -->
-                <div class="single-music-chart d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="300ms">
-                    <!-- Music Content -->
-                    <div class="music-content d-flex align-items-center">
-                        <div class="sl-number">
-                            <h5>2.</h5>
-                        </div>
-                        <div class="music-thumb">
-                            <img src="img/bg-img/26.jpg" alt="">
-                        </div>
-                        <div class="audio-player">
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3">
-                            </audio>
-                        </div>
-                        <div class="music-title">
-                            <h5>Goodbye &amp; Good Riddance - <span>Juice World</span></h5>
+                @for (int i = 0; i < dsBaiHat.Count(); i++)
+                {
+                    <!-- Single Music Chart -->
+                    <div class="single-music-chart d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Music Content -->
+                        <div class="music-content d-flex align-items-center">
+                            <div class="sl-number">
+                                <h5>@(i+1).</h5>
+                            </div>
+                            <div class="music-thumb">
+                                <img src="http://localhost:8888/fileupload/download?key=@(dsBaiHat[i].AnhDaiDien)" alt="">
+                            </div>
+                            <div class="audio-player">
+                                <audio preload="auto" controls>
+                                    <source src="http://localhost:8888/FileUpload/@dsBaiHat[i].LinkFileNhac">
+                                </audio>
+                            </div>
+                            <div class="music-title">
+                                <h5>
+                                    @dsBaiHat[i].TenBaiHat -
+                                    @for (int j = 0; j < dsBaiHat[i].CaSy_BaiHat.Count(); j++)
+                                    {
+                                        <span>@dsBaiHat[i].CaSy_BaiHat.ToArray()[j].CaSy.BietDanh</span>
+                                        if (j != dsBaiHat[i].CaSy_BaiHat.Count() - 1)
+                                        {
+                                            <span>, </span>
+                                        }
+                                    }
+                                </h5>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Single Music Chart -->
-                <div class="single-music-chart d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="500ms">
-                    <!-- Music Content -->
-                    <div class="music-content d-flex align-items-center">
-                        <div class="sl-number">
-                            <h5>3.</h5>
-                        </div>
-                        <div class="music-thumb">
-                            <img src="img/bg-img/27.jpg" alt="">
-                        </div>
-                        <div class="audio-player">
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3">
-                            </audio>
-                        </div>
-                        <div class="music-title">
-                            <h5>The Greatest Showman - <span>Soundtrack</span></h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Music Chart -->
-                <div class="single-music-chart d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="700ms">
-                    <!-- Music Content -->
-                    <div class="music-content d-flex align-items-center">
-                        <div class="sl-number">
-                            <h5>4.</h5>
-                        </div>
-                        <div class="music-thumb">
-                            <img src="img/bg-img/28.jpg" alt="">
-                        </div>
-                        <div class="audio-player">
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3">
-                            </audio>
-                        </div>
-                        <div class="music-title">
-                            <h5>Mamma Mia! Here We Go Again - <span>Soundtrack</span></h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Music Chart -->
-                <div class="single-music-chart d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="900ms">
-                    <!-- Music Content -->
-                    <div class="music-content d-flex align-items-center">
-                        <div class="sl-number">
-                            <h5>5.</h5>
-                        </div>
-                        <div class="music-thumb">
-                            <img src="img/bg-img/29.jpg" alt="">
-                        </div>
-                        <div class="audio-player">
-                            <audio preload="auto" controls>
-                                <source src="audio/dummy-audio.mp3" type="audio/mpeg">
-                            </audio>
-                        </div>
-                        <div class="music-title">
-                            <h5>Pray For The Wicked - <span>Panic! At The Disco</span></h5>
-                        </div>
-                    </div>
-                </div>
+                }
 
             </div>
         </div>
@@ -352,131 +284,164 @@
 </section>
 <!-- Trending Video Area End -->
 <!-- Weekly Sehedule Area Start -->
-<section class="razo-weekly-schedule-area section-padding-80">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="weekly-schedule-table table-responsive">
-                    <!-- Section Heading -->
-                    <div class="col-12">
-                        <div class="section-heading text-center">
-                            <h2>Weekly Sehedule</h2>
+@*<section class="razo-weekly-schedule-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="weekly-schedule-table table-responsive">
+                        <div class="col-12">
+                            <div class="section-heading text-center">
+                                <h2>Weekly Sehedule</h2>
+                            </div>
                         </div>
+
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <p>Monday</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p>Tuesday</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p>Wednesday</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p>Thursday</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p>Friday</p>
+                                    </th>
+                                    <th scope="col">
+                                        <p>Saturday</p>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <p>As BBC Radio 5 live</p>
+                                        <span>01:00 am - 02:30 am</span>
+                                    </th>
+                                    <td>
+                                        <h5>Andrew Peach Birthday Surprise!</h5>
+                                        <span>13:00 pm - 16:00 pm</span>
+                                    </td>
+                                    <td>
+                                        <h5>As BBC Radio 5 live</h5>
+                                        <span>23:00 pm - 02:00 am</span>
+                                    </td>
+                                    <td>
+                                        <h5>Berkshire Sport: Extra Time</h5>
+                                        <span>01:00 am - 03:30 am</span>
+                                    </td>
+                                    <td>
+                                        <h5>As BBC Radio 5 live</h5>
+                                        <span>01:00 am - 02:30 am</span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <p>Berkshire Sport: Extra Time</p>
+                                        <span>05:30 am - 06:30 am</span>
+                                    </th>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Tony Blackburn on BBC Radio</h5>
+                                        <span>03:00 am - 05:00 am</span>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Stereo Underground</h5>
+                                        <span>03:00 am - 05:00 am</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>
+                                        <h5>BBC Music Introducing in</h5>
+                                        <span>10:00 am - 12:00 pm</span>
+                                    </td>
+                                    <td>
+                                        <h5>Stereo Underground</h5>
+                                        <span>13:00 pm - 15:00 pm</span>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Sport on BBC Radio Berkshire</h5>
+                                        <span>07:00 am - 09:30 am</span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">
+                                        <p>Andrew Peach Birthday Surprise!</p>
+                                        <span>13:00 pm - 16:00 pm</span>
+                                    </th>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <h5>BBC Music Introducing in</h5>
+                                        <span>17:00 pm - 20:00 pm</span>
+                                    </td>
+                                    <td>
+                                        <h5>Andrew Peach Birthday Surprise!</h5>
+                                        <span>13:00 pm - 16:00 pm</span>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Danyl Johnson and Natasha Watts</h5>
+                                        <span>13:00 pm - 16:00 pm</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th scope="col">
-                                    <p>Monday</p>
-                                </th>
-                                <th scope="col">
-                                    <p>Tuesday</p>
-                                </th>
-                                <th scope="col">
-                                    <p>Wednesday</p>
-                                </th>
-                                <th scope="col">
-                                    <p>Thursday</p>
-                                </th>
-                                <th scope="col">
-                                    <p>Friday</p>
-                                </th>
-                                <th scope="col">
-                                    <p>Saturday</p>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <p>As BBC Radio 5 live</p>
-                                    <span>01:00 am - 02:30 am</span>
-                                </th>
-                                <td>
-                                    <h5>Andrew Peach Birthday Surprise!</h5>
-                                    <span>13:00 pm - 16:00 pm</span>
-                                </td>
-                                <td>
-                                    <h5>As BBC Radio 5 live</h5>
-                                    <span>23:00 pm - 02:00 am</span>
-                                </td>
-                                <td>
-                                    <h5>Berkshire Sport: Extra Time</h5>
-                                    <span>01:00 am - 03:30 am</span>
-                                </td>
-                                <td>
-                                    <h5>As BBC Radio 5 live</h5>
-                                    <span>01:00 am - 02:30 am</span>
-                                </td>
-                                <td></td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">
-                                    <p>Berkshire Sport: Extra Time</p>
-                                    <span>05:30 am - 06:30 am</span>
-                                </th>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <h5>Tony Blackburn on BBC Radio</h5>
-                                    <span>03:00 am - 05:00 am</span>
-                                </td>
-                                <td></td>
-                                <td>
-                                    <h5>Stereo Underground</h5>
-                                    <span>03:00 am - 05:00 am</span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row"></th>
-                                <td>
-                                    <h5>BBC Music Introducing in</h5>
-                                    <span>10:00 am - 12:00 pm</span>
-                                </td>
-                                <td>
-                                    <h5>Stereo Underground</h5>
-                                    <span>13:00 pm - 15:00 pm</span>
-                                </td>
-                                <td></td>
-                                <td>
-                                    <h5>Sport on BBC Radio Berkshire</h5>
-                                    <span>07:00 am - 09:30 am</span>
-                                </td>
-                                <td></td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">
-                                    <p>Andrew Peach Birthday Surprise!</p>
-                                    <span>13:00 pm - 16:00 pm</span>
-                                </th>
-                                <td>
-                                </td>
-                                <td>
-                                    <h5>BBC Music Introducing in</h5>
-                                    <span>17:00 pm - 20:00 pm</span>
-                                </td>
-                                <td>
-                                    <h5>Andrew Peach Birthday Surprise!</h5>
-                                    <span>13:00 pm - 16:00 pm</span>
-                                </td>
-                                <td></td>
-                                <td>
-                                    <h5>Danyl Johnson and Natasha Watts</h5>
-                                    <span>13:00 pm - 16:00 pm</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
+    </section>*@
+<!-- Weekly Sehedule Area End -->
+<!-- Music Charts Portfolio Area Start -->
+<section class="razo-charts-portfolio-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <!-- Section Heading -->
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>Singer</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @for (int i = 0; i < danhSachCaSy.Count(); i++)
+            {
+                <!-- Single Charts Portfolio -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-charts-portfolio mb-30">
+                        <img src="http://localhost:8888/fileupload/download?key=@(danhSachCaSy[i].AnhDaiDien)" style="width: 100%; height: 250px" alt="">
+                        <!-- Overlay -->
+                        <div class="overlay-content">
+                            <div class="text-center">
+                                <a href="@Url.Action("ChiTietCaSy", "CaSy", new { id = danhSachCaSy[i].CaSyID })"><h5>@danhSachCaSy[i].HoTen</h5></a>
+                                <p>@danhSachCaSy[i].BietDanh - @danhSachCaSy[i].CaSy_BaiHat.Count() ca khúc</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
     </div>
 </section>
-<!-- Weekly Sehedule Area End -->
+<!-- Music Charts Portfolio Area End -->
 <!-- Latest News Area Start -->
 <section class="razo-latest-news-area section-padding-80 bg-overlay bg-img jarallax" style="background-image: url(img/bg-img/32.jpg);">
     <div class="container">
@@ -520,5 +485,42 @@
         }
 
     </div>
+    <!-- Latest News Area End -->
 </section>
-<!-- Latest News Area End -->
+<section style="padding: 80px 0px" id="lienhe">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <!-- Leave A Reply -->
+                <div class="razo-contact-form">
+                    <h2 class="mb-4">Liên hệ - Góp ý</h2>
+
+                    <form action="/Home/ThemLienHe" method="post">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <input type="text" name="message-name" class="form-control mb-30" style="color: black" placeholder="Họ tên">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="number" name="message-sdt" required class="form-control mb-30" style="color: black" placeholder="Số điện thoại">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="email" name="message-email" class="form-control mb-30" style="color: black" placeholder="Email">
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" required class="form-control mb-30" style="color: black" placeholder="Ý kiến đóng góp"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn razo-btn btn-3 mt-15 text-center">Gửi</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div style="padding-top: 67px">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9227189215794!2d105.84935031408833!3d21.035777992916486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abbf4f1c5a11%3A0xe1d9cd0c8d36c960!2zNDggSMOgbmcgQnXhu5NtLCBIb8OgbiBLaeG6v20sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1588941247618!5m2!1svi!2s" width="600" height="450" frameborder="0" style="width: 100%; border: 1px solid gray; height: 270px!important" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>

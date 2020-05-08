@@ -1,18 +1,22 @@
-﻿using System.Linq;
+﻿using CMS.Models;
+using HVITCore.Controllers;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-
 namespace HVIT.Security
 {
     public class AuthorizeUserAttribute : AuthorizeAttribute
     {
         // Custom property
         public string AccessLevel { get; set; }
-
-        public AuthorizeUserAttribute()
+        private new List<string> Roles;
+        BaseApiController baseApiController = new BaseApiController();
+        public AuthorizeUserAttribute(params string[] roles)
         {
             AccessLevel = "";
+            Roles = roles.ToList();
         }
 
         public override void OnAuthorization(HttpActionContext context)

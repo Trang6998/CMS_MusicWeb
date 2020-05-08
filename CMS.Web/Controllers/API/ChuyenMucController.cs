@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/chuyenMuc")]
     public class ChuyenMucController : BaseApiController
     {
-        [HttpGet, Route("")]
+        [AuthorizeUser, HttpGet, Route("")]
         public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
         {
             using (var db = new ApplicationDbContext())
@@ -34,7 +35,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpGet, Route("{chuyenMucID:int}")]
+        [AuthorizeUser, HttpGet, Route("{chuyenMucID:int}")]
         public async Task<IHttpActionResult> Get(int chuyenMucID)
         {
             using (var db = new ApplicationDbContext())
@@ -49,7 +50,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]ChuyenMuc chuyenMuc)
         {
             if (chuyenMuc.ChuyenMucID != 0) return BadRequest("Invalid ChuyenMucID");
@@ -68,7 +69,7 @@ namespace CMS.Controllers
             return Ok(chuyenMuc);
         }
 
-        [HttpPut, Route("{chuyenMucID:int}")]
+        [AuthorizeUser, HttpPut, Route("{chuyenMucID:int}")]
         public async Task<IHttpActionResult> Update(int chuyenMucID, [FromBody]ChuyenMuc chuyenMuc)
         {
             if (chuyenMuc.ChuyenMucID != chuyenMucID) return BadRequest("Id mismatch");
@@ -102,7 +103,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{chuyenMucID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{chuyenMucID:int}")]
         public async Task<IHttpActionResult> Delete(int chuyenMucID)
         {
             using (var db = new ApplicationDbContext())

@@ -6,7 +6,10 @@ import { PaginatedResponse, Pagination } from '@/apiResources/PaginatedResponse'
 import { BaiViet } from '@/models/BaiViet';
 export interface BaiVietApiSearchParams extends Pagination {
     keyworlds?: string;
-    chuyenMucID?: number
+    chuyenMucID?: number;
+    ngayDangTu?: Date;
+    ngayDangDen?: Date;
+    nguoiDangID?: number;
 }
 
 class BaiVietApi extends BaseApi {

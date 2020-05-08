@@ -4,7 +4,7 @@
             <v-card-text>
                 <h2>Danh sách radio</h2>
                 <v-row>
-                    <v-col cols="6">
+                    <v-col cols="6" class="pb-0">
                         <v-text-field v-model="searchParamsRadio.keyworlds"
                                       @input="getDataFromApi(searchParamsRadio)"
                                       hide-details
@@ -12,8 +12,29 @@
                                       label="Tìm kiếm"
                                       placeholder="Tìm kiếm theo tên chuyên mục..."></v-text-field>
                     </v-col>
-                    <v-col cols="6">
+                    <v-col cols="6" class="pb-0">
                         <v-btn @click="showModalThemSua(false, {})" color="primary" style="margin-top: 30px; float: right" small><v-icon small>add</v-icon> Thêm Mới</v-btn>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="3" class="pt-1">
+                        <v-datepicker v-model="searchParamsRadio.ngayDangTu"
+                                      hide-details
+                                      label="Từ ngày"></v-datepicker>
+                    </v-col>
+                    <v-col cols="3" class="pt-1">
+                        <v-datepicker v-model="searchParamsRadio.ngayDangDen"
+                                      hide-details
+                                      label="Đến ngày"></v-datepicker>
+                    </v-col>
+                    <v-col cols="4" class="pt-1">
+                        <v-autocomplete v-model="searchParamsRadio.nguoiDangID"
+                                        :items="dsNhanVien" clearable hide-details
+                                        label="Người đăng"
+                                        placeholder="Chọn người đăng..."
+                                        item-text="HoTen"
+                                        item-value="NhanVienID">
+                        </v-autocomplete>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -34,7 +55,7 @@
                                         <td class="text-center">{{ item.NgayDang | moment("DD/MM/YYYY hh:mm") }}</td>
                                         <td class="text-center">{{ item.NhanVien ? item.NhanVien.HoTen : "" }}</td>
                                         <td class="text-center">{{ item.LuotXem }}</td>
-                                        <td class="text-center">{{ item.TrangThai == true? "Hiện" : "Ẩn" }}</td>
+                                        <td class="text-center"><a @click="capNhatTrangThai(item)">{{ item.TrangThai == true? "Hiện" : "Ẩn" }}</a></td>
                                         <td>
                                             <v-layout nowrap style="place-content: center">
                                                 <v-btn text icon small @click="showModalThemSua(true, item)" class="ma-0">
@@ -73,6 +94,8 @@
     import RadioApi, { RadioApiSearchParams } from '@/apiResources/RadioApi';
     import { Radio } from '@/models/Radio';
     import ThemSuaRadio from './ThemSuaRadio.vue';
+import NhanVienApi, { NhanVienApiSearchParams } from '../../../apiResources/NhanVienApi';
+import { NhanVien } from '../../../models/NhanVien';
 
     export default Vue.extend({
         components: {
@@ -81,6 +104,7 @@
         data() {
             return {
                 dsRadio: [] as Radio[],
+                dsNhanVien: [] as NhanVien[],
                 tableHeader: [
                     { text: 'STT', value: '#', align: 'center', sortable: true },
                     { text: 'Tiêu đề', value: 'HoTen', align: 'center', sortable: true },
@@ -91,6 +115,7 @@
                     { text: 'Thao tác', value: '#', align: 'center', sortable: false },
                 ],
                 searchParamsRadio: { includeEntities: true, itemsPerPage: 10 } as RadioApiSearchParams,
+                searchParamsNhanVien: { includeEntities: true, itemsPerPage: 0 } as NhanVienApiSearchParams,
                 loadingTable: false,
                 selectedRadio: {} as Radio,
                 dialogConfirmDelete: false,
@@ -99,6 +124,7 @@
         watch: {
         },
         created() {
+            this.getDanhSachNhanVien()
         },
         methods: {
             getDataFromApi(searchParamsRadio: RadioApiSearchParams): void {
@@ -111,6 +137,22 @@
             },
             showModalThemSua(isUpdate: boolean, item: any) {
                 (this.$refs.themSuaRadio as any).show(isUpdate, item);
+            },
+            capNhatTrangThai(item: Radio) {
+                item.TrangThai = !item.TrangThai;
+                this.loadingTable = true
+                RadioApi.update(item.RadioID, item).then(res => {
+                    this.loadingTable = false;
+                    this.getDataFromApi(this.searchParamsRadio)
+                }).catch(res => {
+                    this.loadingTable = false;
+                    this.$snotify.error('Cập nhật radio thất bại!');
+                });
+            },
+            getDanhSachNhanVien() {
+                NhanVienApi.search(this.searchParamsNhanVien).then(res => {
+                    this.dsNhanVien = res.Data
+                })
             },
             confirmDelete(chuyenMuc: Radio): void {
                 this.selectedRadio = chuyenMuc;

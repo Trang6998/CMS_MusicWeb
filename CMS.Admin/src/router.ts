@@ -11,6 +11,7 @@ import DanhSachSuKien from './components/QuanLyThongTin/SuKien/DanhSachSuKien.vu
 import DanhSachUsers from './components/Users/DanhSachUsers.vue';
 import DanhSachAlbum from './components/QuanLyThongTin/Album/DanhSachAlbum.vue';
 import DanhSachLoaiTaiKhoan from './components/QuanLyTaiKhoan/LoaiTaiKhoan/DanhSachLoaiTaiKhoan.vue';
+import DanhSachNhanVien from './components/QuanLyTaiKhoan/TaiKhoanNhanVien/DanhSachNhanVien.vue';
 import DanhSachLienHe from './components/LienHe/DanhSachLienHe.vue';
 import DanhSachRadio from './components/QuanLyNhac/Radio/DanhSachRadio.vue';
 import DanhSachBaiHat from './components/QuanLyNhac/BaiHat/DanhSachBaiHat.vue';
@@ -63,6 +64,11 @@ export default new Router({
             path: '/loainhanvien',
             name: 'loaitaikhoan',
             component: DanhSachLoaiTaiKhoan
+        },
+        {
+            path: '/nhanvien',
+            name: 'nhanvien',
+            component: DanhSachNhanVien
         },
         {
             path: '/lienhe',

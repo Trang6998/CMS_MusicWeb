@@ -1,0 +1,121 @@
+﻿@using CMS.Models
+
+@{
+    Album album = ViewBag.ChiTietAlbum;
+    List<BaiHat> danhSachBaiHat = ViewBag.DanhSachBaiHat;
+    List<Album> danhSachAlbumKhac = ViewBag.CacAlbumKhac;
+    ViewBag.Title = album.TenAlbum;
+}
+
+<!-- Single Music Charts Details Area Start -->
+<section class="single-music-charts-details bg-overlay bg-img section-padding-80-0 jarallax" style="background-image: url(http://localhost:8888/fileupload/download?key=@(album.AnhDaiDien));">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Thumbnail -->
+            <div class="col-12 col-md-5">
+                <div class="chart-details-thumbnail" style="margin-bottom: 50px">
+                    <img src="http://localhost:8888/fileupload/download?key=@(album.AnhDaiDien)"
+                         alt=""
+                         style="border: 5px solid #fff; border-radius: 5px; height: 350px">
+                </div>
+            </div>
+            <!-- Content -->
+            <div class="col-12 col-md-7">
+                <div class="chart-details-content mb-80">
+                    <h2>@album.TenAlbum</h2>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Single Music Charts Details Area End -->
+<!-- Music Charts Area Start -->
+<section class="razo-music-charts-area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @for (int i = 0; i < danhSachBaiHat.Count(); i++)
+                {
+                    <!-- Single Music Chart -->
+                    <div class="single-music-chart style-2 d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Music Content -->
+                        <div class="music-content d-flex align-items-center">
+                            <div class="sl-number">
+                                <h5>@(i+1).</h5>
+                            </div>
+                            <div class="music-thumb">
+                                <img src="http://localhost:8888/fileupload/download?key=@(danhSachBaiHat[i].AnhDaiDien)" alt="">
+                            </div>
+                            <div class="audio-player">
+                                <audio preload="auto" controls>
+                                    <source src="http://localhost:8888/FileUpload/@(danhSachBaiHat[i].LinkFileNhac)">
+                                </audio>
+                            </div>
+                            <div class="music-title">
+                                <h5>
+                                    @danhSachBaiHat[i].TenBaiHat -
+                                    @for (int j = 0; j < danhSachBaiHat[i].CaSy_BaiHat.Count(); j++)
+                                    {
+                                        <span>@danhSachBaiHat[i].CaSy_BaiHat.ToArray()[j].CaSy.BietDanh</span>
+                                        if (j != danhSachBaiHat[i].CaSy_BaiHat.Count() - 1)
+                                        {
+                                            <span>, </span>
+                                        }
+                                    }
+                                </h5>
+                            </div>
+                        </div>
+                        <!-- Music Price -->
+                        <div class="music-price">
+                            <h5>@danhSachBaiHat[i].TheLoai.TenTheLoai</h5>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Music Charts Area End -->
+<!-- You May Like Area Start -->
+<section class="razo-you-may-like-area">
+    <div class="container">
+        <div class="row">
+            <!-- Section Heading -->
+            <div class="col-sm-6">
+                <div class="section-heading">
+                    <h2>YOU MAY ALSO LIKE</h2>
+                </div>
+            </div>
+            <!-- Show All Button -->
+            <div class="col-sm-6">
+                <div class="show-all-button mb-50 text-right">
+                    <a href="@Url.Action("Index", "Album")" class="btn show-all-btn">Show More Charts</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            @for (int i = 0; i < danhSachAlbumKhac.Count(); i++)
+            {
+                <!-- Single Charts Portfolio -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-charts-portfolio mb-80">
+                        <img src="http://localhost:8888/fileupload/download?key=@(danhSachAlbumKhac[i].AnhDaiDien)" alt="">
+                        <!-- Overlay -->
+                        <div class="overlay-content">
+                            <div class="text-center">
+                                <a href="@Url.Action("ChiTietAlbum", "Album", new { id = danhSachAlbumKhac[i].AlbumID })">
+                                    <h5>@danhSachAlbumKhac[i].TenAlbum</h5>
+                                </a>
+                                <p>@danhSachAlbumKhac[i].Album_BaiHat.Count() ca khúc</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- You May Like Area End -->

@@ -12,6 +12,7 @@ using CMS.Models;
 using System.IO;
 using System.Drawing;
 using System.Diagnostics;
+using HVIT.Security;
 
 namespace G02Apis.Controllers
 {
@@ -19,6 +20,7 @@ namespace G02Apis.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [AuthorizeUser]
         public FileResult Download(string key)
         {
             var path = db.FileUpload.Where(x => x.FileKey == key).ToList();

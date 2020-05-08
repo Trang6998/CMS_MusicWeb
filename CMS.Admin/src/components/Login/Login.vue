@@ -47,7 +47,7 @@
         methods: {
             submit() {
                 this.loggingIn = true;
-                auth.login(this.credentials, 'home')
+                auth.login(this.credentials, 'baiviet')
                     .then((response: any) => {
                     this.loggingIn = false;
                         if (!this.$store.state.user.AccessToken.IsAuthenticated) {

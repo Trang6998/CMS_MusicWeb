@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/album_BaiHat")]
     public class Album_BaiHatController : BaseApiController
     {
-        [HttpGet, Route("")]
+        [AuthorizeUser, HttpGet, Route("")]
         public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null, [FromUri]int? albumID = null)
         {
             using (var db = new ApplicationDbContext())
@@ -32,7 +33,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]Album_BaiHat album_BaiHat)
         {
             using (var db = new ApplicationDbContext())
@@ -48,7 +49,7 @@ namespace CMS.Controllers
 
             return Ok(album_BaiHat);
         }
-        [HttpPut, Route("{albumID:int}/{baiHatID:int}")]
+        [AuthorizeUser, HttpPut, Route("{albumID:int}/{baiHatID:int}")]
         public async Task<IHttpActionResult> Update(int albumID, int baiHatID, [FromBody]Album_BaiHat album_BaiHat)
         {
             if (album_BaiHat.BaiHatID != baiHatID || album_BaiHat.AlbumID != albumID) return BadRequest("Id mismatch");

@@ -4,16 +4,54 @@
             <v-card-text>
                 <h2>Danh sách bài hát</h2>
                 <v-row>
-                    <v-col cols="6">
+                    <v-col cols="4" class="pb-0">
                         <v-text-field v-model="searchParamsBaiHat.keyworlds"
-                                      @input="getDataFromApi(searchParamsBaiHat)"
                                       hide-details
                                       append-icon="search"
                                       label="Tìm kiếm"
                                       placeholder="Tìm kiếm theo tên chuyên mục..."></v-text-field>
                     </v-col>
-                    <v-col cols="6">
+                    <v-col cols="3" class="pb-0">
+                        <v-autocomplete v-model="searchParamsBaiHat.albumID"
+                                        :items="dsAlbum" clearable hide-details
+                                        label="Album"
+                                        placeholder="Chọn album..."
+                                        item-text="TenAlbum"
+                                        item-value="AlbumID">
+                        </v-autocomplete>
+                    </v-col>
+                    <v-col cols="3" class="pb-0">
+                        <v-autocomplete v-model="searchParamsBaiHat.theLoaiID"
+                                        :items="dsTheLoai" clearable hide-details
+                                        label="Thể loại"
+                                        placeholder="Chọn thể loại..."
+                                        item-text="TenTheLoai"
+                                        item-value="TheLoaiID">
+                        </v-autocomplete>
+                    </v-col>
+                    <v-col cols="2" class="pb-0">
                         <v-btn @click="showModalThemSua(false, {})" color="primary" style="margin-top: 30px; float: right" small><v-icon small>add</v-icon> Thêm Mới</v-btn>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="3" class="pt-1">
+                        <v-datepicker v-model="searchParamsBaiHat.ngayDangTu"
+                                      hide-details
+                                      label="Đăng từ ngày"></v-datepicker>
+                    </v-col>
+                    <v-col cols="3" class="pt-1">
+                        <v-datepicker v-model="searchParamsBaiHat.ngayDangDen"
+                                      hide-details
+                                      label="Đến ngày"></v-datepicker>
+                    </v-col>
+                    <v-col cols="4" class="pt-1">
+                        <v-autocomplete v-model="searchParamsBaiHat.caSyID"
+                                        :items="dsCaSy" clearable hide-details
+                                        label="Ca sỹ thể hiện"
+                                        placeholder="Chọn ca sỹ..."
+                                        item-text="HoTen"
+                                        item-value="CaSyID">
+                        </v-autocomplete>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -45,7 +83,7 @@
                                                 <span v-if="idx != item.Album_BaiHat.length-1">, </span>
                                             </span>
                                         </td>
-                                        <td class="text-center">{{ item.HienThiTrangChu == true? "Hiện" : "Ẩn" }}</td>
+                                        <td class="text-center"><a @click="capNhatTrangThai(item)">{{ item.HienThiTrangChu == true? "Hiện" : "Ẩn" }}</a></td>
                                         <td>
                                             <v-layout nowrap style="place-content: center">
                                                 <v-btn text icon small @click="showModalThemSua(true, item)" class="ma-0">
@@ -84,6 +122,12 @@
     import BaiHatApi, { BaiHatApiSearchParams } from '@/apiResources/BaiHatApi';
     import { BaiHat } from '@/models/BaiHat';
     import ThemSuaBaiHat from './ThemSuaBaiHat.vue';
+    import AlbumApi, { AlbumApiSearchParams } from '../../../apiResources/AlbumApi';
+    import CaSyApi, { CaSyApiSearchParams } from '../../../apiResources/CaSyApi';
+    import TheLoaiApi, { TheLoaiApiSearchParams } from '../../../apiResources/TheLoaiApi';
+    import { Album } from '../../../models/Album';
+    import { TheLoai } from '../../../models/TheLoai';
+    import { CaSy } from '../../../models/CaSy';
 
     export default Vue.extend({
         components: {
@@ -92,6 +136,9 @@
         data() {
             return {
                 dsBaiHat: [] as BaiHat[],
+                dsAlbum: [] as Album[],
+                dsTheLoai: [] as TheLoai[],
+                dsCaSy: [] as CaSy[],
                 tableHeader: [
                     { text: 'STT', value: '#', align: 'center', sortable: true },
                     { text: 'Tên bài', value: 'HoTen', align: 'center', sortable: true },
@@ -103,6 +150,9 @@
                     { text: 'Thao tác', value: '#', align: 'center', sortable: false },
                 ],
                 searchParamsBaiHat: { includeEntities: true, itemsPerPage: 10 } as BaiHatApiSearchParams,
+                searchParamsAlbum: { includeEntities: true, itemsPerPage: 0 } as AlbumApiSearchParams,
+                searchParamsCaSy: { includeEntities: true, itemsPerPage: 0 } as CaSyApiSearchParams,
+                searchParamsTheLoai: { includeEntities: true, itemsPerPage: 0 } as TheLoaiApiSearchParams,
                 loadingTable: false,
                 selectedBaiHat: {} as BaiHat,
                 dialogConfirmDelete: false,
@@ -111,6 +161,9 @@
         watch: {
         },
         created() {
+            this.getDanhSachAlbum()
+            this.getDanhSachCaSy()
+            this.getDanhSachTheLoai()
         },
         methods: {
             getDataFromApi(searchParamsBaiHat: BaiHatApiSearchParams): void {
@@ -123,6 +176,35 @@
             },
             showModalThemSua(isUpdate: boolean, item: any) {
                 (this.$refs.themSuaBaiHat as any).show(isUpdate, item);
+            },
+            getDanhSachAlbum() {
+                AlbumApi.search(this.searchParamsAlbum).then(res => {
+                    this.dsAlbum = res.Data
+                })
+            },
+            getDanhSachCaSy() {
+                CaSyApi.search(this.searchParamsCaSy).then(res => {
+                    this.dsCaSy = res.Data
+                })
+            },
+            getDanhSachTheLoai() {
+                TheLoaiApi.search(this.searchParamsTheLoai).then(res => {
+                    this.dsTheLoai = res.Data
+                })
+            },
+            capNhatTrangThai(item: BaiHat) {
+                item.HienThiTrangChu = !item.HienThiTrangChu;
+                item.Album_BaiHat = undefined as any;
+                item.TheLoai = undefined as any;
+                item.CaSy_BaiHat = undefined as any;
+                this.loadingTable = true
+                BaiHatApi.update(item.BaiHatID, item).then(res => {
+                    this.loadingTable = false;
+                    this.getDataFromApi(this.searchParamsBaiHat)
+                }).catch(res => {
+                    this.loadingTable = false;
+                    this.$snotify.error('Cập nhật bài hát thất bại!');
+                });
             },
             confirmDelete(chuyenMuc: BaiHat): void {
                 this.selectedBaiHat = chuyenMuc;

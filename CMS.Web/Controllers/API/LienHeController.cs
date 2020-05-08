@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/lienHe")]
     public class LienHeController : BaseApiController
     {
-        [HttpGet, Route("")]
+        [AuthorizeUser, HttpGet, Route("")]
         public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
         {
             using (var db = new ApplicationDbContext())
@@ -34,7 +35,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpGet, Route("{lienHeID:int}")]
+        [AuthorizeUser, HttpGet, Route("{lienHeID:int}")]
         public async Task<IHttpActionResult> Get(int lienHeID)
         {
             using (var db = new ApplicationDbContext())
@@ -49,7 +50,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]LienHe lienHe)
         {
             if (lienHe.LienHeID != 0) return BadRequest("Invalid LienHeID");
@@ -68,7 +69,7 @@ namespace CMS.Controllers
             return Ok(lienHe);
         }
 
-        [HttpPut, Route("{lienHeID:int}")]
+        [AuthorizeUser, HttpPut, Route("{lienHeID:int}")]
         public async Task<IHttpActionResult> Update(int lienHeID, [FromBody]LienHe lienHe)
         {
             if (lienHe.LienHeID != lienHeID) return BadRequest("Id mismatch");
@@ -102,7 +103,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{lienHeID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{lienHeID:int}")]
         public async Task<IHttpActionResult> Delete(int lienHeID)
         {
             using (var db = new ApplicationDbContext())

@@ -31,8 +31,8 @@
                                     <tr v-for="(item, index) in dsChuyenMuc" :key="index">
                                         <td class="text-center">{{ index + 1 }}</td>
                                         <td class="text-center">{{ item.TenChuyenMuc }}</td>
-                                        <td class="text-center">{{ item.TrangThai ? "Đang hoạt động" : "Dừng hoạt động" }}</td>
-                                        <td class="text-center">{{ item.HienThiTrangChu ? "Có" : "Không" }}</td>
+                                        <td class="text-center"><a @click="capNhat(item, 1)">{{ item.TrangThai ? "Đang hoạt động" : "Dừng hoạt động" }}</a></td>
+                                        <td class="text-center"><a @click="capNhat(item, 2)">{{ item.HienThiTrangChu ? "Hiện" : "Ẩn" }}</a></td>
                                         <td>
                                             <v-layout nowrap style="place-content: center">
                                                 <v-btn text icon small @click="showModalThemSua(true, item)" class="ma-0">
@@ -107,6 +107,20 @@
             },
             showModalThemSua(isUpdate: boolean, item: any) {
                 (this.$refs.themSuaChuyenMuc as any).show(isUpdate, item);
+            },
+            capNhat(item: ChuyenMuc, loai: number) {
+                if (loai == 1)
+                    item.TrangThai = !item.TrangThai
+                else
+                    item.HienThiTrangChu = !item.HienThiTrangChu
+                this.loadingTable = true
+                ChuyenMucApi.update(item.ChuyenMucID, item).then(res => {
+                    this.loadingTable = false;
+                    this.getDataFromApi(this.searchParamsChuyenMuc)
+                }).catch(res => {
+                    this.loadingTable = false;
+                    this.$snotify.error('Cập nhật chuyên mục thất bại!');
+                });
             },
             confirmDelete(chuyenMuc: ChuyenMuc): void {
                 this.selectedChuyenMuc = chuyenMuc;

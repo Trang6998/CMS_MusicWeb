@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using CMS.Models;
+using HVIT.Security;
+
 namespace CMS.Controllers
 {
     [RoutePrefix("fileupload")]
@@ -40,7 +42,7 @@ namespace CMS.Controllers
         }
 
         [Route("upload")]
-        [HttpPost]
+        [AuthorizeUser, HttpPost]
         public async Task<HttpResponseMessage> UploadFiles()
         {
             var db = new ApplicationDbContext();

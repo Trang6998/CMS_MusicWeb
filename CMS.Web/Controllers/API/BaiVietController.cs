@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/baiViet")]
     public class BaiVietController : BaseApiController
     {
-        [HttpGet, Route("")]
-        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null, [FromUri]int? chuyenMucID = null)
+        [AuthorizeUser, HttpGet, Route("")]
+        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, 
+                                                    [FromUri]string keyworlds = null, 
+                                                    [FromUri]int? chuyenMucID = null,
+                                                    [FromUri]DateTime? ngayDangTu = null,
+                                                    [FromUri]DateTime? ngayDangDen = null,
+                                                    [FromUri]int? nguoiDangID = null)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -31,14 +37,24 @@ namespace CMS.Controllers
                     results = results.Where(x => x.TieuDe.Contains(keyworlds));
                 if (chuyenMucID.HasValue)
                     results = results.Where(x => x.ChuyenMuc_BaiViet.Any(y => y.ChuyenMucID == chuyenMucID));
-
-                results = results.OrderBy(o => o.BaiVietID);
+                if (ngayDangTu.HasValue)
+                    results = results.Where(x => x.NgayDang >= ngayDangTu);
+                if (ngayDangDen.HasValue)
+                    results = results.Where(x => x.NgayDang <= ngayDangDen);
+                if (nguoiDangID.HasValue)
+                    results = results.Where(x => x.NhanVienID == nguoiDangID);
+                results = results.OrderByDescending(o => o.NgayDang);
 
                 var res = results.Select(x => new
                 {
                     x.BaiVietID,
                     x.TieuDe,
                     x.NgayDang,
+                    x.NhanVienID,
+                    x.AnhDaiDien,
+                    x.LuotThich,
+                    x.MoTaNgan,
+                    x.NoiDung,
                     x.NhanVien.HoTen,
                     x.LuotXem,
                     x.TrangThai,
@@ -51,7 +67,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpGet, Route("{baiVietID:int}")]
+        [AuthorizeUser, HttpGet, Route("{baiVietID:int}")]
         public async Task<IHttpActionResult> Get(int baiVietID)
         {
             using (var db = new ApplicationDbContext())
@@ -66,19 +82,21 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]BaiViet baiViet)
         {
             if (baiViet.BaiVietID != 0) return BadRequest("Invalid BaiVietID");
 
             using (var db = new ApplicationDbContext())
             {
+                NhanVien nhanVien = GetNhanVien();
+
                 using (var transaction = db.Database.BeginTransaction())
                 {
                     baiViet.NgayDang = DateTime.Now;
                     baiViet.LuotXem = 0;
                     baiViet.LuotThich = 0;
-                    baiViet.NhanVienID = 1;
+                    baiViet.NhanVienID = nhanVien.NhanVienID;
 
                     var lstChuyenMucBaiViet = baiViet.ChuyenMuc_BaiViet.ToArray();
                     baiViet.ChuyenMuc_BaiViet = null;
@@ -100,7 +118,7 @@ namespace CMS.Controllers
             return Ok(baiViet);
         }
 
-        [HttpPut, Route("{baiVietID:int}")]
+        [AuthorizeUser, HttpPut, Route("{baiVietID:int}")]
         public async Task<IHttpActionResult> Update(int baiVietID, [FromBody]BaiViet baiViet)
         {
             if (baiViet.BaiVietID != baiVietID) return BadRequest("Id mismatch");
@@ -148,7 +166,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{baiVietID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{baiVietID:int}")]
         public async Task<IHttpActionResult> Delete(int baiVietID)
         {
             using (var db = new ApplicationDbContext())
@@ -156,12 +174,15 @@ namespace CMS.Controllers
                 using (var transaction = db.Database.BeginTransaction())
                 {
                     var baiViet = await db.BaiViet.SingleOrDefaultAsync(o => o.BaiVietID == baiVietID);
+                    var chuyenMuc_baiViet = db.ChuyenMuc_BaiViet.Where(o => o.BaiVietID == baiVietID);
 
                     if (baiViet == null)
                         return NotFound();
 
+                    db.ChuyenMuc_BaiViet.RemoveRange(chuyenMuc_baiViet);
                     db.Entry(baiViet).State = EntityState.Deleted;
                     await db.SaveChangesAsync();
+
                     transaction.Commit();
                     return Ok();
                 }

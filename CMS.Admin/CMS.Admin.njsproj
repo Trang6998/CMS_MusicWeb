@@ -210,8 +210,14 @@
     <Content Include="src\components\QuanLyBaiViet\BaiViet\ThemSuaBaiViet.vue" />
     <Content Include="src\components\QuanLyBaiViet\ChuyenMuc\DanhSachChuyenMuc.vue" />
     <Content Include="src\components\QuanLyBaiViet\ChuyenMuc\ThemSuaChuyenMuc.vue" />
+    <Content Include="src\components\QuanLyNhac\BaiHat\DanhSachBaiHat.vue" />
+    <Content Include="src\components\QuanLyNhac\BaiHat\ThemSuaBaiHat.vue" />
+    <Content Include="src\components\QuanLyNhac\Radio\DanhSachRadio.vue" />
+    <Content Include="src\components\QuanLyNhac\Radio\ThemSuaRadio.vue" />
     <Content Include="src\components\QuanLyTaiKhoan\LoaiTaiKhoan\DanhSachLoaiTaiKhoan.vue" />
     <Content Include="src\components\QuanLyTaiKhoan\LoaiTaiKhoan\ThemSuaLoaiTaiKhoan.vue" />
+    <Content Include="src\components\QuanLyTaiKhoan\TaiKhoanNhanVien\DanhSachNhanVien.vue" />
+    <Content Include="src\components\QuanLyTaiKhoan\TaiKhoanNhanVien\ThemSuaNhanVien.vue" />
     <Content Include="src\components\QuanLyThongTin\Album\DanhSachAlbum.vue" />
     <Content Include="src\components\QuanLyThongTin\Album\ThemSuaAlbum.vue" />
     <Content Include="src\components\QuanLyThongTin\CaSy\DanhSachCaSy.vue" />

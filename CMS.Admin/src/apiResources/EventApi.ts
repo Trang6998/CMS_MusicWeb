@@ -5,7 +5,12 @@ import { BaseApi } from '@/apiResources/BaseApi';
 import { PaginatedResponse, Pagination } from '@/apiResources/PaginatedResponse';
 import { Event } from '@/models/Event';
 export interface EventApiSearchParams extends Pagination {
-   keyworlds? : string
+    keyworlds?: string;
+    ngayDangTu?: Date;
+    ngayDangDen?: Date;
+    tinhThanhID?: number;
+    quanHuyenID?: number;
+    xaPhuongID?: number;
 }
 
 class EventApi extends BaseApi {

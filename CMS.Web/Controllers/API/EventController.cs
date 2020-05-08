@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/suKien")]
     public class EventController : BaseApiController
     {
-        [HttpGet, Route("")]
-        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
+        [AuthorizeUser, HttpGet, Route("")]
+        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, 
+                                                    [FromUri]string keyworlds = null,
+                                                    [FromUri]DateTime? ngayDangTu = null,
+                                                    [FromUri]DateTime? ngayDangDen = null,
+                                                    [FromUri]int? tinhThanhID = null,
+                                                    [FromUri]int? quanHuyenID = null,
+                                                    [FromUri]int? xaPhuongID = null)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -27,14 +34,23 @@ namespace CMS.Controllers
 
                 if (!string.IsNullOrWhiteSpace(keyworlds))
                     results = results.Where(x => x.TieuDe.Contains(keyworlds));
-
+                if (ngayDangTu.HasValue)
+                    results = results.Where(x => x.ThoiGianTu >= ngayDangTu);
+                if (ngayDangDen.HasValue)
+                    results = results.Where(x => x.ThoiGianDen <= ngayDangDen);
+                if (tinhThanhID.HasValue)
+                    results = results.Where(x => x.TinhThanhID == tinhThanhID);
+                if (quanHuyenID.HasValue)
+                    results = results.Where(x => x.QuanHuyenID == quanHuyenID);
+                if (xaPhuongID.HasValue)
+                    results = results.Where(x => x.XaPhuongID == xaPhuongID);
                 results = results.OrderBy(o => o.EventID);
 
                 return Ok((await GetPaginatedResponseAsync(results, pagination)));
             }
         }
 
-        [HttpGet, Route("{suKienID:int}")]
+        [AuthorizeUser, HttpGet, Route("{suKienID:int}")]
         public async Task<IHttpActionResult> Get(int suKienID)
         {
             using (var db = new ApplicationDbContext())
@@ -49,15 +65,18 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]Event suKien)
         {
             if (suKien.EventID != 0) return BadRequest("Invalid EventID");
 
             using (var db = new ApplicationDbContext())
             {
+                NhanVien nhanVien = GetNhanVien();
+
                 using (var transaction = db.Database.BeginTransaction())
                 {
+                    suKien.NhanVienID = nhanVien.NhanVienID;
                     db.Event.Add(suKien);
 
                     await db.SaveChangesAsync();
@@ -68,7 +87,7 @@ namespace CMS.Controllers
             return Ok(suKien);
         }
 
-        [HttpPut, Route("{suKienID:int}")]
+        [AuthorizeUser, HttpPut, Route("{suKienID:int}")]
         public async Task<IHttpActionResult> Update(int suKienID, [FromBody]Event suKien)
         {
             if (suKien.EventID != suKienID) return BadRequest("Id mismatch");
@@ -102,7 +121,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{suKienID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{suKienID:int}")]
         public async Task<IHttpActionResult> Delete(int suKienID)
         {
             using (var db = new ApplicationDbContext())

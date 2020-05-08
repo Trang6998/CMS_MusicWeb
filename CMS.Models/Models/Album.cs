@@ -17,6 +17,7 @@ namespace CMS.Models
         public string TenAlbum { get; set; }
 
         public string AnhDaiDien { get; set; }
+        //public string GioiThieu { get; set; }
 
         public bool? TrangThai { get; set; }
 

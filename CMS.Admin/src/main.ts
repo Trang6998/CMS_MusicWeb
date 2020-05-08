@@ -16,6 +16,9 @@ import DateTimePicker from '@/components/Commons/DateTimePicker';
 import VChooseFile from '@/components/Commons/VChooseFile';
 import VueCkeditor from '@/components/Commons/VueCkeditor';
 import EventBus from '@/EventBus';
+import VueTheMask from 'vue-the-mask'
+Vue.use(VueTheMask)
+
 import CommonFunctions, { CommonFunctionsService } from './Utils/CommonFunctions';
 Vue.use(DateTimePicker);
 Vue.use(VChooseFile);

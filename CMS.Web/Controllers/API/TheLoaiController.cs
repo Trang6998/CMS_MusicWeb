@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/theLoai")]
     public class TheLoaiController : BaseApiController
     {
-        [HttpGet, Route("")]
+        [AuthorizeUser, HttpGet, Route("")]
         public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
         {
             using (var db = new ApplicationDbContext())
@@ -34,7 +35,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpGet, Route("{theLoaiID:int}")]
+        [AuthorizeUser, HttpGet, Route("{theLoaiID:int}")]
         public async Task<IHttpActionResult> Get(int theLoaiID)
         {
             using (var db = new ApplicationDbContext())
@@ -49,7 +50,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]TheLoai theLoai)
         {
             if (theLoai.TheLoaiID != 0) return BadRequest("Invalid TheLoaiID");
@@ -68,7 +69,7 @@ namespace CMS.Controllers
             return Ok(theLoai);
         }
 
-        [HttpPut, Route("{theLoaiID:int}")]
+        [AuthorizeUser, HttpPut, Route("{theLoaiID:int}")]
         public async Task<IHttpActionResult> Update(int theLoaiID, [FromBody]TheLoai theLoai)
         {
             if (theLoai.TheLoaiID != theLoaiID) return BadRequest("Id mismatch");
@@ -102,7 +103,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{theLoaiID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{theLoaiID:int}")]
         public async Task<IHttpActionResult> Delete(int theLoaiID)
         {
             using (var db = new ApplicationDbContext())

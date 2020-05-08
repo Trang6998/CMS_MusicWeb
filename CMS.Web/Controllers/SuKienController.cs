@@ -34,5 +34,27 @@ namespace CMS.Web.Controllers
             }
             return View();
         }
+        [HttpPost]
+        public ActionResult TimKiem()
+        {
+            string tenSuKien = "", diaChi = "";
+            tenSuKien = Request.Form["keyworld"];
+            diaChi = (Request.Form["diachi"]).ToString().ToLower();
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.Event.Include(x => x.TinhThanh)
+                                    .Include(x => x.QuanHuyen)
+                                    .Include(x => x.XaPhuong)
+                                    .ToList();
+                if (!string.IsNullOrWhiteSpace(tenSuKien))
+                    query = query.Where(x => x.TieuDe.Contains(tenSuKien)).ToList();
+                if (!string.IsNullOrWhiteSpace(diaChi))
+                    query = query.Where(x => x.DiaDiem.ToLower().Contains(diaChi)
+                                          || x.QuanHuyen.TenQuanHuyen.ToLower().Contains(diaChi)
+                                          || x.XaPhuong.TenXaPhuong.ToLower().Contains(diaChi)
+                                          || x.TinhThanh.TenTinhThanh.ToLower().Contains(diaChi)).ToList();
+            }
+            return View();
+        }
     }
 }

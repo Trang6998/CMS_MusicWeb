@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/nhanVien")]
     public class NhanVienController : BaseApiController
     {
-        [HttpGet, Route("")]
+        [AuthorizeUser, HttpGet, Route("")]
         public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
         {
             using (var db = new ApplicationDbContext())
@@ -34,7 +35,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpGet, Route("{nhanVienID:int}")]
+        [AuthorizeUser, HttpGet, Route("{nhanVienID:int}")]
         public async Task<IHttpActionResult> Get(int nhanVienID)
         {
             using (var db = new ApplicationDbContext())
@@ -49,7 +50,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]NhanVien nhanVien)
         {
             if (nhanVien.NhanVienID != 0) return BadRequest("Invalid NhanVienID");
@@ -68,7 +69,7 @@ namespace CMS.Controllers
             return Ok(nhanVien);
         }
 
-        [HttpPut, Route("{nhanVienID:int}")]
+        [AuthorizeUser, HttpPut, Route("{nhanVienID:int}")]
         public async Task<IHttpActionResult> Update(int nhanVienID, [FromBody]NhanVien nhanVien)
         {
             if (nhanVien.NhanVienID != nhanVienID) return BadRequest("Id mismatch");
@@ -105,7 +106,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{nhanVienID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{nhanVienID:int}")]
         public async Task<IHttpActionResult> Delete(int nhanVienID)
         {
             using (var db = new ApplicationDbContext())

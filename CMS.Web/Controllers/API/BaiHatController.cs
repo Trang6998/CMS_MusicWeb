@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/baiHat")]
     public class BaiHatController : BaseApiController
     {
-        [HttpGet, Route("")]
-        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
+        [AuthorizeUser, HttpGet, Route("")]
+        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, 
+                                                    [FromUri]string keyworlds = null,
+                                                    [FromUri]int? albumID = null,
+                                                    [FromUri]int? caSyID = null,
+                                                    [FromUri]int? theLoaiID = null,
+                                                    [FromUri]DateTime? ngayDangTu = null,
+                                                    [FromUri]DateTime? ngayDangDen = null)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -28,14 +35,23 @@ namespace CMS.Controllers
 
                 if (!string.IsNullOrWhiteSpace(keyworlds))
                     results = results.Where(x => x.TenBaiHat.Contains(keyworlds));
+                if (albumID.HasValue)
+                    results = results.Where(x => x.Album_BaiHat.Any(y => y.AlbumID == albumID));
+                if (caSyID.HasValue)
+                    results = results.Where(x => x.CaSy_BaiHat.Any(y => y.CaSyID == caSyID));
+                if (theLoaiID.HasValue)
+                    results = results.Where(x => x.TheLoaiID == theLoaiID);
+                if (ngayDangTu.HasValue)
+                    results = results.Where(x => x.NgayDang >= ngayDangTu);
+                if (ngayDangDen.HasValue)
+                    results = results.Where(x => x.NgayDang <= ngayDangDen);
 
-                results = results.OrderBy(o => o.BaiHatID);
-
+                results = results.OrderByDescending(o => o.NgayDang).ThenBy(o => o.BaiHatID);
                 return Ok((await GetPaginatedResponseAsync(results, pagination)));
             }
         }
 
-        [HttpGet, Route("{baiHatID:int}")]
+        [AuthorizeUser, HttpGet, Route("{baiHatID:int}")]
         public async Task<IHttpActionResult> Get(int baiHatID)
         {
             using (var db = new ApplicationDbContext())
@@ -45,12 +61,28 @@ namespace CMS.Controllers
 
                 if (baiHat == null)
                     return NotFound();
+                string fileKey = baiHat.LinkFileNhac.Split('.')[0];
+                var file = db.FileUpload.FirstOrDefault(x => x.FileKey == fileKey);
 
-                return Ok(baiHat);
+                var res = new
+                {
+                    baiHat.AnhDaiDien,
+                    baiHat.BaiHatID,
+                    baiHat.CaSy_BaiHat,
+                    baiHat.HienThiTrangChu,
+                    baiHat.LinkFileNhac,
+                    baiHat.NgayDang,
+                    baiHat.TenBaiHat,
+                    baiHat.TheLoai,
+                    baiHat.TheLoaiID,
+                    baiHat.TieuDe,
+                    TenFile = file != null ? file.FileName + "." + file.FileType : ""
+                };
+                return Ok(res);
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]BaiHat baiHat)
         {
             if (baiHat.BaiHatID != 0) return BadRequest("Invalid BaiHatID");
@@ -79,7 +111,7 @@ namespace CMS.Controllers
             return Ok(baiHat);
         }
 
-        [HttpPut, Route("{baiHatID:int}")]
+        [AuthorizeUser, HttpPut, Route("{baiHatID:int}")]
         public async Task<IHttpActionResult> Update(int baiHatID, [FromBody]BaiHat baiHat)
         {
             if (baiHat.BaiHatID != baiHatID) return BadRequest("Id mismatch");
@@ -126,7 +158,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{baiHatID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{baiHatID:int}")]
         public async Task<IHttpActionResult> Delete(int baiHatID)
         {
             using (var db = new ApplicationDbContext())
@@ -134,9 +166,14 @@ namespace CMS.Controllers
                 using (var transaction = db.Database.BeginTransaction())
                 {
                     var baiHat = await db.BaiHat.SingleOrDefaultAsync(o => o.BaiHatID == baiHatID);
+                    var caSy_BaiHat = db.CaSy_BaiHat.Where(o => o.BaiHatID == baiHatID);
+                    var album_BaiHat = db.Album_BaiHat.Where(o => o.BaiHatID == baiHatID);
 
                     if (baiHat == null)
                         return NotFound();
+
+                    db.CaSy_BaiHat.RemoveRange(caSy_BaiHat);
+                    db.Album_BaiHat.RemoveRange(album_BaiHat);
 
                     db.Entry(baiHat).State = EntityState.Deleted;
                     await db.SaveChangesAsync();

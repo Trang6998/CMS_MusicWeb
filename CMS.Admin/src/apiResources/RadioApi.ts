@@ -5,7 +5,10 @@ import { BaseApi } from '@/apiResources/BaseApi';
 import { PaginatedResponse, Pagination } from '@/apiResources/PaginatedResponse';
 import { Radio } from '@/models/Radio';
 export interface RadioApiSearchParams extends Pagination {
-   keyworlds? : string
+    keyworlds?: string;
+    nguoiDangID?: number;
+    ngayDangTu?: Date;
+    ngayDangDen?: Date;
 }
 
 class RadioApi extends BaseApi {

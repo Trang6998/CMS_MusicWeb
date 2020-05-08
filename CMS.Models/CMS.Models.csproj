@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Album_BaiHat.cs" />

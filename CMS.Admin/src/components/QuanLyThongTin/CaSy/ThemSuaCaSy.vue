@@ -259,6 +259,10 @@
             getDataFromApi(id: number): void {
                 CaSyApi.get(id).then(res => {
                     this.caSy = res;
+                    if (res.TinhThanhID != null)
+                        this.getQuanHuyen(res.TinhThanhID)
+                    if (res.QuanHuyenID != null)
+                        this.getXaPhuong(res.QuanHuyenID)
                 });
             },
             changeTinhThanh(id: number) {

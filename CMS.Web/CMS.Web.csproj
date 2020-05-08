@@ -195,6 +195,7 @@
     <Compile Include="Base\RegexUtilities.cs" />
     <Compile Include="Base\UrlEncoder.cs" />
     <Compile Include="Base\Utils.cs" />
+    <Compile Include="Controllers\CaSyController.cs" />
     <Compile Include="Controllers\RadioController.cs" />
     <Compile Include="Controllers\API\ExportController.cs" />
     <Compile Include="Controllers\API\FileUploadController.cs" />
@@ -2006,11 +2007,6 @@
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\Home\LienHe.cshtml" />
-    <Content Include="Views\Home\Dangky.cshtml" />
-    <Content Include="Views\Home\NguoiDungChuaTonTai.cshtml" />
-    <Content Include="Views\Home\DatLichThatBai.cshtml" />
-    <Content Include="Views\LienHe\Index.cshtml" />
     <Content Include="Views\QLNoiDung\index.cshtml" />
     <Content Include="static\ckeditor\CHANGES.md" />
     <Content Include="static\ckeditor\LICENSE.md" />
@@ -2058,6 +2054,11 @@
     <Content Include="Views\SuKien\ChiTietSuKien.cshtml" />
     <Content Include="Views\Album\Index.cshtml" />
     <Content Include="Views\Radio\Index.cshtml" />
+    <Content Include="Views\Radio\ChiTietRadio.cshtml" />
+    <Content Include="Views\CaSy\Index.cshtml" />
+    <Content Include="Views\CaSy\ChiTietCaSy.cshtml" />
+    <Content Include="Views\Home\ThemLienHe.cshtml" />
+    <Content Include="Views\Album\ChiTietAlbum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

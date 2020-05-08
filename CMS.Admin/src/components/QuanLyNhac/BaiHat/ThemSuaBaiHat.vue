@@ -50,6 +50,9 @@
                                         </v-file-input>
                                     </v-col>
                                     <v-col cols="12" class="py-0 px-1">
+                                        <span style="font-size: 16px">File đã tải: {{baiHat.TenFile}}</span>
+                                    </v-col>
+                                    <v-col cols="12" class="py-0 px-1">
                                         <v-text-field v-model="baiHat.TenBaiHat"
                                                       label="Tiêu đề"
                                                       type="text"

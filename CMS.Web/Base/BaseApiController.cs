@@ -11,11 +11,30 @@ using System.Threading.Tasks;
 using System.Web.Http.Filters;
 using System.Web.Http.Controllers;
 using System.Security.Claims;
+using CMS.Models;
 
 namespace HVITCore.Controllers
 {
     public class BaseApiController : ApiController
     {
+        private NhanVien nhanVien;
+
+        protected NhanVien GetNhanVien()
+        {
+            if (nhanVien == null)
+            {
+                using (ApplicationDbContext db = new ApplicationDbContext())
+                {
+                    if (this.User != null)
+                    {
+                        nhanVien = db.NhanVien
+                            .Include(x => x.Users)
+                            .FirstOrDefault(x => x.Users.Any(y => y.UserName.Equals(this.User.Identity.Name)));
+                    }
+                }
+            }
+            return nhanVien;
+        }
         protected async Task<PaginatedResponse<T>> GetPaginatedResponseAsync<T>(IQueryable<T> query, Pagination pagination)
         {
             if (pagination == null) pagination = new Pagination();

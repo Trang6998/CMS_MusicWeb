@@ -6,14 +6,19 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/radio")]
     public class RadioController : BaseApiController
     {
-        [HttpGet, Route("")]
-        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
+        [AuthorizeUser, HttpGet, Route("")]
+        public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, 
+                                                    [FromUri]string keyworlds = null,
+                                                    [FromUri]DateTime? ngayDangTu = null,
+                                                    [FromUri]DateTime? ngayDangDen = null,
+                                                    [FromUri]int? nguoiDangID = null)
         {
             using (var db = new ApplicationDbContext())
             {
@@ -27,14 +32,19 @@ namespace CMS.Controllers
 
                 if (!string.IsNullOrWhiteSpace(keyworlds))
                     results = results.Where(x => x.TieuDe.Contains(keyworlds));
-
-                results = results.OrderBy(o => o.RadioID);
+                if (ngayDangTu.HasValue)
+                    results = results.Where(x => x.NgayDang >= ngayDangTu);
+                if (ngayDangDen.HasValue)
+                    results = results.Where(x => x.NgayDang <= ngayDangDen);
+                if (nguoiDangID.HasValue)
+                    results = results.Where(x => x.NhanVienID == nguoiDangID);
+                results = results.OrderByDescending(o => o.NgayDang);
 
                 return Ok((await GetPaginatedResponseAsync(results, pagination)));
             }
         }
 
-        [HttpGet, Route("{radioID:int}")]
+        [AuthorizeUser, HttpGet, Route("{radioID:int}")]
         public async Task<IHttpActionResult> Get(int radioID)
         {
             using (var db = new ApplicationDbContext())
@@ -44,22 +54,42 @@ namespace CMS.Controllers
 
                 if (radio == null)
                     return NotFound();
+                string fileKey = radio.LinkFile.Split('.')[0];
+                var file = db.FileUpload.FirstOrDefault(x => x.FileKey == fileKey);
 
-                return Ok(radio);
+                var res = new
+                {
+                    radio.AnhDaiDien,
+                    radio.RadioID,
+                    radio.TrangThai,
+                    radio.LinkFile,
+                    radio.NgayDang,
+                    radio.LuotThich,
+                    radio.LuotXem,
+                    radio.NhanVien,
+                    radio.TieuDe,
+                    radio.NhanVienID,
+                    radio.NoiDung,
+                    radio.SoThuTu,
+                    TenFile = file != null ? file.FileName + "." + file.FileType : ""
+                };
+                return Ok(res);
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]Radio radio)
         {
             if (radio.RadioID != 0) return BadRequest("Invalid RadioID");
 
             using (var db = new ApplicationDbContext())
             {
+                NhanVien nhanVien = GetNhanVien();
+
                 using (var transaction = db.Database.BeginTransaction())
                 {
                     radio.LuotXem = 0;
-                    radio.NhanVienID = 1;
+                    radio.NhanVienID = nhanVien.NhanVienID;
                     radio.NgayDang = DateTime.Now;
                     radio.SoThuTu = db.Radio.Count() + 1;
 
@@ -73,7 +103,7 @@ namespace CMS.Controllers
             return Ok(radio);
         }
 
-        [HttpPut, Route("{radioID:int}")]
+        [AuthorizeUser, HttpPut, Route("{radioID:int}")]
         public async Task<IHttpActionResult> Update(int radioID, [FromBody]Radio radio)
         {
             if (radio.RadioID != radioID) return BadRequest("Id mismatch");
@@ -109,7 +139,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{radioID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{radioID:int}")]
         public async Task<IHttpActionResult> Delete(int radioID)
         {
             using (var db = new ApplicationDbContext())

@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/album")]
     public class AlbumController : BaseApiController
     {
-        [HttpGet, Route("")]
+        [AuthorizeUser, HttpGet, Route("")]
         public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
         {
             using (var db = new ApplicationDbContext())
@@ -41,7 +42,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpGet, Route("{albumID:int}")]
+        [AuthorizeUser, HttpGet, Route("{albumID:int}")]
         public async Task<IHttpActionResult> Get(int albumID)
         {
             using (var db = new ApplicationDbContext())
@@ -56,7 +57,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]Album album)
         {
             if (album.AlbumID != 0) return BadRequest("Invalid AlbumID");
@@ -75,7 +76,7 @@ namespace CMS.Controllers
             return Ok(album);
         }
 
-        [HttpPut, Route("{albumID:int}")]
+        [AuthorizeUser, HttpPut, Route("{albumID:int}")]
         public async Task<IHttpActionResult> Update(int albumID, [FromBody]Album album)
         {
             if (album.AlbumID != albumID) return BadRequest("Id mismatch");
@@ -109,7 +110,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{albumID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{albumID:int}")]
         public async Task<IHttpActionResult> Delete(int albumID)
         {
             using (var db = new ApplicationDbContext())
@@ -117,10 +118,12 @@ namespace CMS.Controllers
                 using (var transaction = db.Database.BeginTransaction())
                 {
                     var album = await db.Album.SingleOrDefaultAsync(o => o.AlbumID == albumID);
+                    var album_BaiHat = db.Album_BaiHat.Where(o => o.AlbumID == albumID);
 
                     if (album == null)
                         return NotFound();
 
+                    db.Album_BaiHat.RemoveRange(album_BaiHat);
                     db.Entry(album).State = EntityState.Deleted;
                     await db.SaveChangesAsync();
                     transaction.Commit();

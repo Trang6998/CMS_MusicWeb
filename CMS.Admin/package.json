@@ -11,6 +11,7 @@
     "name": ""
   },
   "dependencies": {
+    "@types/vue-the-mask": "^0.11.0",
     "axios": "^0.18.1",
     "dayspan-vuetify": "^0.3.6",
     "js-cookie": "^2.2.1",
@@ -25,6 +26,7 @@
     "vue-property-decorator": "^7.3.0",
     "vue-router": "^3.1.5",
     "vue-snotify": "^3.2.1",
+    "vue-the-mask": "^0.11.1",
     "vue2-filters": "^0.3.0",
     "vuetify": "^2.2.22",
     "vuex": "^3.1.2"

@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using HVITCore.Controllers;
 using System.Data.Entity.Infrastructure;
 using CMS.Models;
+using HVIT.Security;
 
 namespace CMS.Controllers
 {
     [RoutePrefix("api/caSy")]
     public class CaSyController : BaseApiController
     {
-        [HttpGet, Route("")]
+        [AuthorizeUser, HttpGet, Route("")]
         public async Task<IHttpActionResult> Search([FromUri]Pagination pagination, [FromUri]string keyworlds = null)
         {
             using (var db = new ApplicationDbContext())
@@ -26,7 +27,7 @@ namespace CMS.Controllers
                 }
 
                 if (!string.IsNullOrWhiteSpace(keyworlds))
-                    results = results.Where(x => x.HoTen.Contains(keyworlds));
+                    results = results.Where(x => x.HoTen.Contains(keyworlds) || x.SoDienThoai.Contains(keyworlds) || x.DiaChi.Contains(keyworlds) || x.BietDanh.Contains(keyworlds));
 
                 results = results.OrderBy(o => o.CaSyID);
                 var res = results.Select(x => new
@@ -43,7 +44,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpGet, Route("{caSyID:int}")]
+        [AuthorizeUser, HttpGet, Route("{caSyID:int}")]
         public async Task<IHttpActionResult> Get(int caSyID)
         {
             using (var db = new ApplicationDbContext())
@@ -58,7 +59,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpPost, Route("")]
+        [AuthorizeUser, HttpPost, Route("")]
         public async Task<IHttpActionResult> Insert([FromBody]CaSy caSy)
         {
             if (caSy.CaSyID != 0) return BadRequest("Invalid CaSyID");
@@ -77,7 +78,7 @@ namespace CMS.Controllers
             return Ok(caSy);
         }
 
-        [HttpPut, Route("{caSyID:int}")]
+        [AuthorizeUser, HttpPut, Route("{caSyID:int}")]
         public async Task<IHttpActionResult> Update(int caSyID, [FromBody]CaSy caSy)
         {
             if (caSy.CaSyID != caSyID) return BadRequest("Id mismatch");
@@ -111,7 +112,7 @@ namespace CMS.Controllers
             }
         }
 
-        [HttpDelete, Route("{caSyID:int}")]
+        [AuthorizeUser, HttpDelete, Route("{caSyID:int}")]
         public async Task<IHttpActionResult> Delete(int caSyID)
         {
             using (var db = new ApplicationDbContext())
@@ -119,10 +120,12 @@ namespace CMS.Controllers
                 using (var transaction = db.Database.BeginTransaction())
                 {
                     var caSy = await db.CaSy.SingleOrDefaultAsync(o => o.CaSyID == caSyID);
+                    var caSy_BaiHat = db.CaSy_BaiHat.Where(o => o.CaSyID == caSyID);
 
                     if (caSy == null)
                         return NotFound();
 
+                    db.CaSy_BaiHat.RemoveRange(caSy_BaiHat);
                     db.Entry(caSy).State = EntityState.Deleted;
                     await db.SaveChangesAsync();
                     transaction.Commit();

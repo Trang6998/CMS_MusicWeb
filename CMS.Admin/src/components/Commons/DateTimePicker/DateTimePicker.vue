@@ -1,9 +1,9 @@
 <template>
-    <v-layout wrap style="position:relative;">
-        <v-flex xs12 style="position:absolute; top:-8px;color:#666">
+    <v-row wrap style="position:relative;">
+        <v-col cols="12" style="position:absolute; padding-bottom: 0px; padding-top: 0px ;color:#666">
             {{label}}
-        </v-flex>
-        <v-flex xs7>
+        </v-col>
+        <v-col cols="7" class="pb-0 pt-0">
             <v-text-field :value="dateString"
                           single-line
                           mask="date"
@@ -31,8 +31,8 @@
                         <v-btn text color="primary" @click="$refs.dialogDate.save(selectedDate); saveDate(selectedDate)">OK</v-btn>
                     </v-date-picker>
             </v-dialog>
-        </v-flex>
-        <v-flex xs5>
+        </v-col>
+        <v-col cols="5" class="pb-0 pt-0">
             <v-text-field
                           :value="timeString"
                           mask="time"
@@ -61,8 +61,8 @@
                         <v-btn text color="primary" @click="$refs.dialogTime.save(selectedTime); saveTime(selectedTime)">OK</v-btn>
                     </v-time-picker>
             </v-dialog>
-        </v-flex>
-    </v-layout>
+        </v-col>
+    </v-row>
 </template>
 <script lang="ts">
     import { Vue } from 'vue-property-decorator';

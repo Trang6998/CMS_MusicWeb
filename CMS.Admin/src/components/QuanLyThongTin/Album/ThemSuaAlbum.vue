@@ -61,7 +61,7 @@
                         </v-row>
                         <v-row>
 
-                            <v-col cols="12" class="pt-0" v-show="hien">
+                            <v-col cols="12" class="pt-4" v-show="hien">
                                 <v-row>
                                     <v-col cols="12"><h3>Danh sách bài hát thuộc album </h3></v-col>
                                 </v-row>

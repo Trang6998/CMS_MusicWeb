@@ -118,18 +118,18 @@
                         icon: 'chat',
                         title: 'Quản lý bài viết',
                         active: true,
-                        show: this.user.LoaiTaiKhoanID == 1,
+                        show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 4,
                         link: '#',
                         items: [
                             {
                                 icon: 'fas fa-clipboard-list',
-                                show: this.user.LoaiTaiKhoanID == 1,
+                                show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 4,
                                 title: 'Chuyên mục bài viết',
                                 link: '/chuyenmuc'
                             },
                             {
                                 icon: 'fas fa-clipboard-list',
-                                show: this.user.LoaiTaiKhoanID == 1,
+                                show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 4,
                                 title: 'Bài viết',
                                 link: '/baiviet'
                             }
@@ -139,21 +139,21 @@
                         icon: 'play_circle_filled',
                         title: 'Quản lý âm thanh',
                         active: true,
-                        show: this.user.LoaiTaiKhoanID == 1,
+                        show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 5,
                         link: '#',
                         items: [
 
                             {
                                 icon: 'view_list',
                                 title: 'Bài hát',
-                                show: this.user.LoaiTaiKhoanID == 1,
+                                show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 5,
                                 link: '/baihat'
                             },
 
                             {
                                 icon: 'supervisor_account',
                                 title: 'Radio',
-                                show: this.user.LoaiTaiKhoanID == 1,
+                                show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 5,
                                 link: '/radio'
                             }
                         ]
@@ -162,31 +162,31 @@
                         icon: 'view_list',
                         title: 'Quản lý thông tin',
                         active: true,
-                        show: this.user.LoaiTaiKhoanID == 1,
+                        show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 6 || this.user.LoaiTaiKhoanID == 5,
                         link: '#',
                         items: [
                             {
                                 icon: 'monetization_on',
                                 title: 'Thể loại nhạc',
-                                show: this.user.LoaiTaiKhoanID == 1,
+                                show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 6 || this.user.LoaiTaiKhoanID == 5,
                                 link: '/theloainhac'
                             },
                             {
                                 icon: 'flag',
                                 title: 'Ca sỹ',
-                                show: this.user.LoaiTaiKhoanID == 1,
+                                show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 6,
                                 link: '/casy'
                             },
                             {
                                 icon: 'mode_edit',
                                 title: 'Album',
-                                show: this.user.LoaiTaiKhoanID == 1,
+                                show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 6 || this.user.LoaiTaiKhoanID == 5,
                                 link: '/album'
                             },
                             {
                                 icon: 'mood',
                                 title: 'Sự kiện',
-                                show: true,
+                                show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 6,
                                 link: '/sukien'
                             },
                         ]
@@ -216,7 +216,7 @@
                     {
                         icon: 'feedback',
                         title: 'Liên hệ bạn đọc',
-                        show: this.user.LoaiTaiKhoanID == 1,
+                        show: this.user.LoaiTaiKhoanID == 1 || this.user.LoaiTaiKhoanID == 4,
                         link: '/lienhe'
                     }
                 ];

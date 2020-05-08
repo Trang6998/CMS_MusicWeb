@@ -9,7 +9,8 @@ namespace CMS.Models
     [Table("auth.Users")]
     public partial class User
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required]
         public int UserId { get; set; }
 
         [Required]
