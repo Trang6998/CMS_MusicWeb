@@ -17,7 +17,7 @@
 </div>
 <!-- /Preloader -->
 <!-- Podcast Thumbnail Area Start -->
-<section class="podcast-hero-area section-padding-80 bg-overlay bg-img jarallax" style="background-image: url(http://localhost:8888/fileupload/download?key=@(radioMoiNhat.AnhDaiDien));">
+<section class="podcast-hero-area section-padding-80 bg-overlay bg-img jarallax" style="background-image: url('/fileupload/download?key=@(radioMoiNhat.AnhDaiDien)');">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -29,7 +29,7 @@
                             <a href="#" class="event-date"><i class="icon_calendar"></i> @radioMoiNhat.NgayDang.ToLongDateString()</a>
                             <a href="#" class="event-time"><i class="fa fa-eye"></i> @radioMoiNhat.LuotXem</a>
                             @*<a href="#" class="event-time"><i class="icon_heart_alt"></i> 38</a>*@
-                            <a href="#" class="event-address"><i class="icon_chat_alt"></i> <span class="fb-comments-count" data-href="http://localhost:8888/BaiViet/ChiTietBaiViet/@(radioMoiNhat.RadioID)"></span></a>
+                            <a href="#" class="event-address"><i class="icon_chat_alt"></i> <span class="fb-comments-count" data-href="./BaiViet/ChiTietBaiViet/@(radioMoiNhat.RadioID)"></span></a>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
             <div class="col-12">
                 <div class="audio-player">
                     <audio preload="auto">
-                        <source src="http://localhost:8888/FileUpload/@(radioMoiNhat.LinkFile)">
+                        <source src="../../FileUpload/@(radioMoiNhat.LinkFile)">
                     </audio>
                 </div>
             </div>
@@ -73,10 +73,10 @@
                     <div class="single-podcast-area mb-30 wow fadeInUp" data-wow-delay="800ms">
                         <!-- Thumbnail -->
                         <div class="podcast-thumb">
-                            <img src="http://localhost:8888/fileupload/download?key=@(danhSachRadio[i].AnhDaiDien)" alt="">
+                            <img src="../../fileupload/download?key=@(danhSachRadio[i].AnhDaiDien)" alt="">
                             <div class="like-comment">
                                 <a href="#" class="like">@danhSachRadio[i].LuotXem <i class="fa fa-eye"></i></a>
-                                <a href="#" class="like"><span class="fb-comments-count" data-href="http://localhost:8888/BaiViet/ChiTietBaiViet/@(danhSachRadio[i].RadioID)"></span> <i class="icon_chat"></i></a>
+                                <a href="#" class="like"><span class="fb-comments-count" data-href="./BaiViet/ChiTietBaiViet/@(danhSachRadio[i].RadioID)"></span> <i class="icon_chat"></i></a>
                             </div>
                         </div>
                         <!-- Content -->
@@ -88,7 +88,7 @@
                             <div class="border-line"></div>
                             <div class="play-download-btn d-flex align-items-center justify-content-between">
                                 <a href="@Url.Action("ChiTietRadio", "Radio", new { id = danhSachRadio[i].RadioID })" class="btn razo-btn btn-sm">playing now</a>
-                                <a href="http://localhost:8888/fileupload/download?key=@(danhSachRadio[i].LinkFile.Split('.')[0])" class="music-download-btn" download><i class="icon_download"></i></a>
+                                <a href="../../fileupload/download?key=@(danhSachRadio[i].LinkFile.Split('.')[0])" class="music-download-btn" download><i class="icon_download"></i></a>
                             </div>
                         </div>
                     </div>

@@ -33,8 +33,6 @@
                         <div class="col-12 col-md-10 col-lg-6">
                             <div class="welcome-text text-center">
                                 <h2 data-animation="fadeInUp" data-delay="100ms">Designed For Music, Engineered to Last</h2>
-                                <h5 data-animation="fadeInUp" data-delay="400ms">31st Dec - Night out party....Don't miss it</h5>
-                                <a href="#" class="btn razo-btn btn-2" data-animation="fadeInUp" data-delay="300ms">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -52,8 +50,6 @@
                         <div class="col-12 col-md-10 col-lg-6">
                             <div class="welcome-text text-center">
                                 <h2 data-animation="fadeInUp" data-delay="100ms">Designed For Music, Engineered to Last</h2>
-                                <h5 data-animation="fadeInUp" data-delay="400ms">31st Dec - Night out party....Don't miss it</h5>
-                                <a href="#" class="btn razo-btn btn-2" data-animation="fadeInUp" data-delay="300ms">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -71,8 +67,6 @@
                         <div class="col-12 col-md-10 col-lg-6">
                             <div class="welcome-text text-center">
                                 <h2 data-animation="fadeInUp" data-delay="100ms">Designed For Music, Engineered to Last</h2>
-                                <h5 data-animation="fadeInUp" data-delay="400ms">31st Dec - Night out party....Don't miss it</h5>
-                                <a href="#" class="btn razo-btn btn-2" data-animation="fadeInUp" data-delay="300ms">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -90,8 +84,6 @@
                         <div class="col-12 col-md-9 col-lg-6">
                             <div class="welcome-text text-center">
                                 <h2 data-animation="fadeInUpBig" data-delay="100ms">Designed For Music, Engineered to Last</h2>
-                                <h5 data-animation="fadeInUpBig" data-delay="400ms">31st Dec - Night out party....Don't miss it</h5>
-                                <a href="#" class="btn razo-btn btn-2" data-animation="fadeInUpBig" data-delay="300ms">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -115,11 +107,11 @@
                     </div>
 
                     <!-- Featured Post Area -->
-                    <div class="featured-post-area bg-img bg-overlay mb-30" style="background-image: url(http://localhost:8888/fileupload/download?key=@(dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[0].BaiViet.AnhDaiDien));">
+                    <div class="featured-post-area bg-img bg-overlay mb-30" style="background-image: url('/fileupload/download?key=@(dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[0].BaiViet.AnhDaiDien)');">
                         <!-- Post Overlay -->
                         <div class="post-overlay">
                             <div class="post-meta">
-                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="fb-comments-count" data-href="http://localhost:8888/BaiViet/ChiTietBaiViet/@(dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[0].BaiVietID)"></span></a>
+                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="fb-comments-count" data-href="/BaiViet/ChiTietBaiViet/@(dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[0].BaiVietID)"></span></a>
                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> @dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[0].BaiViet.LuotXem</a>
                             </div>
                             <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = @dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[0].BaiVietID })" class="post-title">@dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[0].BaiViet.TieuDe</a>
@@ -135,12 +127,12 @@
                                 <div class="razo-single-post d-flex mb-30">
                                     <!-- Post Thumbnail -->
                                     <div class="post-thumbnail">
-                                        <a href="single-blog.html"><img style="height: 100px" src="http://localhost:8888/fileupload/download?key=@(dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[i].BaiViet.AnhDaiDien)" alt=""></a>
+                                        <a href="single-blog.html"><img style="height: 100px" src="/fileupload/download?key=@(dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[i].BaiViet.AnhDaiDien)" alt=""></a>
                                     </div>
                                     <!-- Post Content -->
                                     <div class="post-content">
                                         <div class="post-meta">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="fb-comments-count" data-href="http://localhost:8888/BaiViet/ChiTietBaiViet/@(dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[i].BaiVietID)"></span></a>
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="fb-comments-count" data-href="/BaiViet/ChiTietBaiViet/@(dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[i].BaiVietID)"></span></a>
                                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> @dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[i].BaiViet.LuotXem</a>
                                         </div>
                                         <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = @dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[i].BaiVietID })" class="post-title">@dsChuyenMuc[0].ChuyenMuc_BaiViet.ToArray()[i].BaiViet.TieuDe</a>
@@ -163,11 +155,11 @@
                     </div>
 
                     <!-- Featured Post Area -->
-                    <div class="featured-post-area small-featured-post bg-img bg-overlay mb-30" style="background-image: url(http://localhost:8888/fileupload/download?key=@(dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[0].BaiViet.AnhDaiDien));">
+                    <div class="featured-post-area small-featured-post bg-img bg-overlay mb-30" style="background-image: url(/fileupload/download?key=@(dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[0].BaiViet.AnhDaiDien));">
                         <!-- Post Overlay -->
                         <div class="post-overlay">
                             <div class="post-meta">
-                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="fb-comments-count" data-href="http://localhost:8888/BaiViet/ChiTietBaiViet/@(dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[0].BaiVietID)"></span></a>
+                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="fb-comments-count" data-href="/BaiViet/ChiTietBaiViet/@(dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[0].BaiVietID)"></span></a>
                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> @dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[0].BaiViet.LuotXem</a>
                             </div>
                             <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = @dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[0].BaiVietID })" class="post-title">@dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[0].BaiViet.TieuDe</a>
@@ -180,12 +172,12 @@
                         <div class="razo-single-post d-flex mb-30">
                             <!-- Post Thumbnail -->
                             <div class="post-thumbnail">
-                                <a href="single-blog.html"><img style="height: 100px" src="http://localhost:8888/fileupload/download?key=@(dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[i].BaiViet.AnhDaiDien)" alt=""></a>
+                                <a href="single-blog.html"><img style="height: 100px" src="/fileupload/download?key=@(dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[i].BaiViet.AnhDaiDien)" alt=""></a>
                             </div>
                             <!-- Post Content -->
                             <div class="post-content">
                                 <div class="post-meta">
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="fb-comments-count" data-href="http://localhost:8888/BaiViet/ChiTietBaiViet/@(dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[i].BaiVietID)"></span></a>
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="fb-comments-count" data-href="/BaiViet/ChiTietBaiViet/@(dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[i].BaiVietID)"></span></a>
                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> @dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[i].BaiViet.LuotXem</a>
                                 </div>
                                 <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = @dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[i].BaiVietID })" class="post-title">@dsChuyenMuc[1].ChuyenMuc_BaiViet.ToArray()[i].BaiViet.TieuDe</a>
@@ -230,11 +222,11 @@
                                 <h5>@(i+1).</h5>
                             </div>
                             <div class="music-thumb">
-                                <img src="http://localhost:8888/fileupload/download?key=@(dsBaiHat[i].AnhDaiDien)" alt="">
+                                <img src="/fileupload/download?key=@(dsBaiHat[i].AnhDaiDien)" alt="">
                             </div>
                             <div class="audio-player">
                                 <audio preload="auto" controls>
-                                    <source src="http://localhost:8888/FileUpload/@dsBaiHat[i].LinkFileNhac">
+                                    <source src="/FileUpload/@dsBaiHat[i].LinkFileNhac">
                                 </audio>
                             </div>
                             <div class="music-title">
@@ -425,7 +417,7 @@
                 <!-- Single Charts Portfolio -->
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-charts-portfolio mb-30">
-                        <img src="http://localhost:8888/fileupload/download?key=@(danhSachCaSy[i].AnhDaiDien)" style="width: 100%; height: 250px" alt="">
+                        <img src="/fileupload/download?key=@(danhSachCaSy[i].AnhDaiDien)" style="width: 100%; height: 250px" alt="">
                         <!-- Overlay -->
                         <div class="overlay-content">
                             <div class="text-center">
@@ -466,7 +458,7 @@
         @for (int i = 0; i < dsTinMoi.Count(); i++)
         {
             <!-- Single Latest News Area -->
-            <div class="razo-single-latest-news-area bg-overlay bg-img" style="background-image: url(http://localhost:8888/fileupload/download?key=@(dsTinMoi[i].AnhDaiDien));">
+            <div class="razo-single-latest-news-area bg-overlay bg-img" style="background-image: url(/fileupload/download?key=@(dsTinMoi[i].AnhDaiDien));">
                 <!-- Post Content -->
                 <div class="post-content">
                     <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = dsTinMoi[i].BaiVietID })" class="post-title">@dsTinMoi[i].TieuDe</a>

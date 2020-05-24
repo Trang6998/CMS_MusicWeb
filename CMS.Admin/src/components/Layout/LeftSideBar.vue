@@ -9,7 +9,7 @@
                    height="50"
                    to="/">
             <a href="/">
-                <img v-bind:src="'http://localhost:8888/img/core-img/logo.png'" height="30" alt="Insight">
+                <img v-bind:src="'../../img/core-img/logo.png'" height="30" alt="Insight">
             </a>
             <v-toolbar-title class="ml-0 pl-3">
                 <span class="hidden-sm-and-down" style="font-size:16px;"></span>

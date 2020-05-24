@@ -8,13 +8,13 @@
 }
 
 <!-- Single Music Charts Details Area Start -->
-<section class="single-music-charts-details bg-overlay bg-img section-padding-80-0 jarallax" style="background-image: url(http://localhost:8888/fileupload/download?key=@(caSy.AnhDaiDien));">
+<section class="single-music-charts-details bg-overlay bg-img section-padding-80-0 jarallax" style="background-image: url('/fileupload/download?key=@(caSy.AnhDaiDien)');">
     <div class="container">
         <div class="row align-items-center">
             <!-- Thumbnail -->
             <div class="col-12 col-md-5">
                 <div class="chart-details-thumbnail" style="margin-bottom: 50px">
-                    <img src="http://localhost:8888/fileupload/download?key=@(caSy.AnhDaiDien)" 
+                    <img src="../../fileupload/download?key=@(caSy.AnhDaiDien)" 
                          alt=""
                          style="border: 5px solid #fff; border-radius: 5px; height: 350px">
                 </div>
@@ -86,11 +86,11 @@
                                 <h5>@(i+1).</h5>
                             </div>
                             <div class="music-thumb">
-                                <img src="http://localhost:8888/fileupload/download?key=@(danhSachBaiHat[i].AnhDaiDien)" alt="">
+                                <img src="../../fileupload/download?key=@(danhSachBaiHat[i].AnhDaiDien)" alt="">
                             </div>
                             <div class="audio-player">
                                 <audio preload="auto" controls>
-                                    <source src="http://localhost:8888/FileUpload/@(danhSachBaiHat[i].LinkFileNhac)">
+                                    <source src="../../FileUpload/@(danhSachBaiHat[i].LinkFileNhac)">
                                 </audio>
                             </div>
                             <div class="music-title">
@@ -142,7 +142,7 @@
                 <!-- Single Charts Portfolio -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-charts-portfolio mb-80">
-                        <img src="http://localhost:8888/fileupload/download?key=@(danhSachCaSyKhac[i].AnhDaiDien)" alt="">
+                        <img src="../../fileupload/download?key=@(danhSachCaSyKhac[i].AnhDaiDien)" style="height: 250px; width: 100%; object-fit: cover;" alt="">
                         <!-- Overlay -->
                         <div class="overlay-content">
                             <div class="text-center">

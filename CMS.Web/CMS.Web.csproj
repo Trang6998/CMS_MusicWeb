@@ -49,6 +49,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <LegacyPublishPropertiesPageEnabled>true</LegacyPublishPropertiesPageEnabled>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKFinder, Version=2.4.0.2631, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
@@ -238,6 +244,7 @@
     <Compile Include="Security\TokenProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\dbMusicWeb.mdf" />
     <Content Include="audio\dummy-audio.mp3" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -2061,7 +2068,6 @@
     <Content Include="Views\Album\ChiTietAlbum.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
     <Folder Include="FileUpload\" />
     <Folder Include="lib\ckfinder\core\connector\Files\files\TinTuc\" />

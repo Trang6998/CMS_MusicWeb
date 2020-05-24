@@ -15,7 +15,7 @@
     }
 </style>
 <!-- Blog Details Post Thumbnail Area Start -->
-<section class="blog-details-post-thumbnail-area bg-overlay bg-img jarallax" style="background-image: url(http://localhost:8888/fileupload/download?key=@(suKien.AnhDaiDien));">
+<section class="blog-details-post-thumbnail-area bg-overlay bg-img jarallax" style="background-image: url('/fileupload/download?key=@(suKien.AnhDaiDien)');">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -53,7 +53,7 @@
                     @Html.Raw(suKien.NoiDung)
                     
                     <!-- Comments Area -->
-                    <div class="fb-comments" data-href="http://localhost:8888/SuKien/ChiTietSuKien/@suKien.EventID" data-numposts="10" data-width=""></div>
+                    <div class="fb-comments" data-href="./SuKien/ChiTietSuKien/@suKien.EventID" data-numposts="10" data-width=""></div>
 
                     
                 </div>
@@ -82,7 +82,7 @@
                     <div class="razo-blog-masonary-single-item">
                         <!-- Post Thumbnail -->
                         <div class="post-thumbnail">
-                            <a href="#"><img src="http://localhost:8888/fileupload/download?key=@(suKienGanDay[i].AnhDaiDien)" alt=""></a>
+                            <a href="#"><img src="../../fileupload/download?key=@(suKienGanDay[i].AnhDaiDien)" alt=""></a>
                         </div>
                         <!-- Post Content -->
                         <div class="post-content">

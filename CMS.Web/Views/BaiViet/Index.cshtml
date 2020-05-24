@@ -25,7 +25,7 @@
         @for (int i = 0; i < dsTinMoi.Count(); i++)
         {
             <!-- Single Latest News Area -->
-            <div class="razo-single-latest-news-area bg-overlay bg-img" style="background-image: url(http://localhost:8888/fileupload/download?key=@(dsTinMoi[i].AnhDaiDien));">
+            <div class="razo-single-latest-news-area bg-overlay bg-img" style="background-image: url('./fileupload/download?key=@(dsTinMoi[i].AnhDaiDien)');">
                 <!-- Post Content -->
                 <div class="post-content">
                     <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { id = dsTinMoi[i].BaiVietID })" class="post-title">@dsTinMoi[i].TieuDe</a>
@@ -88,7 +88,7 @@
                                                         <div class="razo-blog-masonary-single-item">
                                                             <!-- Post Thumbnail -->
                                                             <div class="post-thumbnail">
-                                                                <a href="#"><img src="http://localhost:8888/fileupload/download?key=@(dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.AnhDaiDien)" alt=""></a>
+                                                                <a href="#"><img src="../../fileupload/download?key=@(dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.AnhDaiDien)" alt=""></a>
                                                             </div>
                                                             <!-- Post Content -->
                                                             <div class="post-content">
@@ -124,7 +124,7 @@
                                                         <div class="razo-blog-masonary-single-item">
                                                             <!-- Post Thumbnail -->
                                                             <div class="post-thumbnail">
-                                                                <a href="#"><img src="http://localhost:8888/fileupload/download?key=@(dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.AnhDaiDien)" alt=""></a>
+                                                                <a href="#"><img src="../../fileupload/download?key=@(dsChuyenMuc[i].ChuyenMuc_BaiViet.ToArray()[j].BaiViet.AnhDaiDien)" alt=""></a>
                                                             </div>
                                                             <!-- Post Content -->
                                                             <div class="post-content">
