@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@types/vue-the-mask": "^0.11.0",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "dayspan-vuetify": "^0.3.6",
     "js-cookie": "^2.2.1",
     "v-mask": "^2.1.0",
